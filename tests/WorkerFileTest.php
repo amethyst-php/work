@@ -33,7 +33,6 @@ class WorkerFileTest extends BaseTest
         $bag->set('worker', 'Railken\LaraOre\Workers\FileWorker');
         $bag->set('extra', [
             'filename' => "{{ 'now'|date('Y-m-d') }}.pdf",
-            'disk' => 'public',
             'generator' => 'application/pdf',
             'content' => "{{ message }}",
             'tags' => 'pdf,hello,invoice'
@@ -59,7 +58,6 @@ class WorkerFileTest extends BaseTest
     {
         $result = $this->getManager()->create($this->getParameters());
         $result = $this->getManager()->create($this->getParameters());
-        print_r($result->getSimpleErrors());
 
         $this->assertEquals(true, $result->ok());
 

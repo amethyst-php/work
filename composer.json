@@ -7,7 +7,8 @@
         "railken/bag": "^1.2",
         "railken/laravel-manager": "^3.1",
         "guzzlehttp/guzzle": "^6.3",
-        "railken/lara-ore-template": "dev-master"
+        "railken/lara-ore-template": "dev-master",
+        "railken/lara-ore-file": "dev-master"
 
     },
     "require-dev": {

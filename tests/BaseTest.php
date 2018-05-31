@@ -12,7 +12,10 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
             \Railken\Laravel\Manager\ManagerServiceProvider::class,
             \Railken\LaraOre\WorkServiceProvider::class,
             \Railken\LaraOre\Template\TemplateServiceProvider::class,
+            \Barryvdh\DomPDF\ServiceProvider::class,
             \TwigBridge\ServiceProvider::class,
+            \Railken\LaraOre\FileServiceProvider::class,
+            \Spatie\MediaLibrary\MediaLibraryServiceProvider::class
         ];
     }
     
@@ -37,6 +40,21 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
         $this->artisan('vendor:publish', [
             '--provider' => 'Railken\LaraOre\WorkServiceProvider',
+            '--force' => true
+        ]);
+
+        $this->artisan('vendor:publish', [
+            '--provider' => 'Railken\LaraOre\Template\TemplateServiceProvider',
+            '--force' => true
+        ]);
+
+        $this->artisan('vendor:publish', [
+            '--provider' => 'Spatie\MediaLibrary\MediaLibraryServiceProvider',
+            '--force' => true
+        ]);
+        
+        $this->artisan('vendor:publish', [
+            '--provider' => 'Railken\LaraOre\FileServiceProvider',
             '--force' => true
         ]);
 

@@ -5,7 +5,7 @@ namespace Railken\LaraOre\Work\Tests;
 use Railken\Bag;
 use Railken\LaraOre\Work\WorkManager;
 
-class WorkTest extends BaseTest
+class WorkerEmailTest extends BaseTest
 {
     use Traits\CommonTrait;
 
@@ -39,8 +39,19 @@ class WorkTest extends BaseTest
         return $bag;
     }
 
-    public function testSuccessCommon()
+    public function testWorkerEmail()
     {
-        $this->commonTest($this->getManager(), $this->getParameters());
+        $work = $this->getManager()->create($this->getParameters())->getResource();
+
+
+        $this->getManager()->dispatch($work, [
+            'user' => [
+                'email' => 'test@test.net',
+                'name' => 'test'
+            ],
+            'message' => 'El. psy. congroo.'
+        ]);
+
+        $this->assertEquals(1, 1);
     }
 }

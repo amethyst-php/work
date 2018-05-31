@@ -34,6 +34,16 @@ class FileWorker extends BaseWorker
         $generator = new $generator;
 
         $bag->content = $generator->render($extra->content, $data);
+        $bag->entity = null;
+
+
+
+
+        if (isset($data['__model']) && isset($data['__model']['id']) && isset($data['__model']['type']) && class_exists($data['__model']['type'])) {
+            $bag->entity = (new $data['__model']['type'])->newQuery()->where('id', $data['__model']['id'])->first();
+        }
+
+
         return $bag;
     }
 
@@ -51,5 +61,7 @@ class FileWorker extends BaseWorker
         $options = $this->getOptionsByWork($work, $data);
         $fm = new FileManager();
         $result = $fm->uploadFileByContent($options->content, $options->filename);
+        
+        $options->entity && $fm->assignToModel($result->getResource(), $options->entity, ['tags' => ['default']]);
     }
 }

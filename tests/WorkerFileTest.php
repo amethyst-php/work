@@ -4,6 +4,7 @@ namespace Railken\LaraOre\Work\Tests;
 
 use Railken\Bag;
 use Railken\LaraOre\Work\WorkManager;
+use Railken\LaraOre\Work\Work;
 
 class WorkerFileTest extends BaseTest
 {
@@ -40,7 +41,7 @@ class WorkerFileTest extends BaseTest
         return $bag;
     }
 
-    public function testWorkerFile()
+    public function testWorkerFile1()
     {
         $result = $this->getManager()->create($this->getParameters());
         
@@ -48,8 +49,23 @@ class WorkerFileTest extends BaseTest
 
         $work = $result->getResource();
 
+        $this->getManager()->dispatch($work, [
+            'message' => 'Hello'
+        ]);
+    }
+
+    public function testWorkerFile2()
+    {
+        $result = $this->getManager()->create($this->getParameters());
+        $result = $this->getManager()->create($this->getParameters());
+        print_r($result->getSimpleErrors());
+
+        $this->assertEquals(true, $result->ok());
+
+        $work = $result->getResource();
 
         $this->getManager()->dispatch($work, [
+            '__model' => ['id' => 1, 'type' => Work::class],
             'message' => 'Hello'
         ]);
     }

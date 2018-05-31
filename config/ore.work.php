@@ -11,4 +11,8 @@ return [
     |
     */
     'table' => 'ore_works',
+
+    'workers' => [
+    	'email' => \Railken\LaraOre\Workers\EmailWorker::class
+    ]
 ];

@@ -16,6 +16,7 @@ class CreateWorksTable extends Migration
         Schema::create('ore_works', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('worker');
             $table->timestamps();
         });
     }

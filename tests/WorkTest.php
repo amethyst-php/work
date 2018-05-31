@@ -29,12 +29,20 @@ class WorkTest extends BaseTest
     {
         $bag = new bag();
         $bag->set('name', 'a common name');
+        $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
 
         return $bag;
     }
 
     public function testSuccessCommon()
     {
-        $this->commonTest(new WorkManager(), $this->getParameters());
+        $this->commonTest($this->getManager(), $this->getParameters());
+    }
+
+
+    public function testWorkerEmail()
+    {
+        $resource = $this->getManager()->create($this->getParameters())->getResource();
+        $this->assertEquals(1, 1);
     }
 }

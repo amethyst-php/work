@@ -14,7 +14,7 @@ class WorkServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/ore.works.php' => config_path('ore.works.php'),
+            __DIR__.'/../config/ore.work.php' => config_path('ore.work.php'),
         ], 'config');
 
         if (!class_exists('CreateWorksTable')) {

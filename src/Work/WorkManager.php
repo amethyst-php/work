@@ -21,10 +21,11 @@ class WorkManager extends ModelManager
      * @var array
      */
     protected $attributes = [
-        Attributes\Id\IdAttribute::class, 
-        Attributes\Name\NameAttribute::class, 
-        Attributes\CreatedAt\CreatedAtAttribute::class, 
-        Attributes\UpdatedAt\UpdatedAtAttribute::class
+        Attributes\Id\IdAttribute::class,
+        Attributes\Name\NameAttribute::class,
+        Attributes\CreatedAt\CreatedAtAttribute::class,
+        Attributes\UpdatedAt\UpdatedAtAttribute::class,
+        Attributes\Worker\WorkerAttribute::class
     ];
 
     /**

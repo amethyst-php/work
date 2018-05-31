@@ -15,7 +15,7 @@ class Work extends Model implements EntityContract
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name', 'worker'
     ];
 
     /**

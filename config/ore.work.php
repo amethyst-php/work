@@ -13,7 +13,17 @@ return [
     'table' => 'ore_works',
 
     'workers' => [
-        'email' => \Railken\LaraOre\Workers\EmailWorker::class,
-        'file' => \Railken\LaraOre\Workers\FileWorker::class
+        [
+            'worker' => \Railken\LaraOre\Workers\EmailWorker::class,
+            'data' => [
+                'to', 'body', 'subject'
+            ],
+        ],
+        [
+            'worker' => \Railken\LaraOre\Workers\FileWorker::class,
+            'data' => [
+                'filename', 'content', 'generator', 'tags'
+            ]
+        ]
     ]
 ];

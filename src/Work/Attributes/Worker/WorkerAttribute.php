@@ -6,6 +6,7 @@ use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 use Railken\Laravel\Manager\Tokens;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Collection;
 
 class WorkerAttribute extends BaseAttribute
 {
@@ -61,6 +62,6 @@ class WorkerAttribute extends BaseAttribute
      */
     public function valid(EntityContract $entity, $value)
     {
-        return in_array($value, Config::get('ore.work.workers'));
+        return in_array($value, (new Collection(Config::get('ore.work.workers')))->map(function($v) { return $v['worker']; })->toArray());
     }
 }

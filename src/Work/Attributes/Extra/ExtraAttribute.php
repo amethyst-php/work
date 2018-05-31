@@ -6,6 +6,7 @@ use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 use Railken\Laravel\Manager\Tokens;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Config;
 
 class ExtraAttribute extends BaseAttribute
 {
@@ -61,10 +62,11 @@ class ExtraAttribute extends BaseAttribute
      */
     public function valid(EntityContract $entity, $value)
     {
-        $available = [
-            'Railken\LaraOre\Workers\EmailWorker' => ['to', 'body', 'subject'],
-            'Railken\LaraOre\Workers\FileWorker' => ['filename', 'content', 'disk', 'generator', 'tags'],
-        ][$entity->worker];
+        $availables = (new Collection(Config::get('ore.work.workers')))->first(function($v) use ($entity) {
+            return $v['worker'] === $entity->worker;
+        });
+
+        $available = $availables['data'];
 
         $diff = (new Collection($value))->keys()->diff($available);
 

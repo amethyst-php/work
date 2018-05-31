@@ -26,6 +26,7 @@ class FileWorker extends BaseWorker
 
         $extra = new Bag($work->extra);
 
+
         $textGenerator = new TextGenerator();
         $bag->filename = $textGenerator->render($extra->filename, $data);
         $bag->disk = $extra->disk;
@@ -58,6 +59,7 @@ class FileWorker extends BaseWorker
     {
         $options = $this->getOptionsByWork($work, $data);
         $fm = new FileManager();
+
         $result = $fm->uploadFileByContent($options->content, $options->filename);
 
         $fm->update($result->getResource(), new Bag(['tags' => $options->tags]));

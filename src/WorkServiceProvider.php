@@ -23,4 +23,14 @@ class WorkServiceProvider extends ServiceProvider
             ], 'migrations');
         }
     }
+
+    /**
+     * Register bindings in the container.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__.'/../config/ore.work.php', 'ore.work');
+    }
 }

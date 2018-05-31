@@ -63,7 +63,7 @@ class ExtraAttribute extends BaseAttribute
     {
         $available = [
             'Railken\LaraOre\Workers\EmailWorker' => ['to', 'body', 'subject'],
-            'Railken\LaraOre\Workers\FileWorker' => ['filename', 'content', 'disk', 'generator', 'model_id', 'model_type'],
+            'Railken\LaraOre\Workers\FileWorker' => ['filename', 'content', 'disk', 'generator', 'tags'],
         ][$entity->worker];
 
         $diff = (new Collection($value))->keys()->diff($available);

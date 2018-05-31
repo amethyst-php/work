@@ -35,7 +35,8 @@ class WorkerFileTest extends BaseTest
             'filename' => "{{ 'now'|date('Y-m-d') }}.pdf",
             'disk' => 'public',
             'generator' => 'application/pdf',
-            'content' => "{{ message }}"
+            'content' => "{{ message }}",
+            'tags' => 'pdf,hello,invoice'
         ]);
 
         return $bag;

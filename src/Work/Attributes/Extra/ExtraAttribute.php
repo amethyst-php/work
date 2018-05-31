@@ -5,7 +5,7 @@ namespace Railken\LaraOre\Work\Attributes\Extra;
 use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 use Railken\Laravel\Manager\Tokens;
-use Respect\Validation\Validator as v;
+use Illuminate\Support\Collection;
 
 class ExtraAttribute extends BaseAttribute
 {
@@ -61,6 +61,12 @@ class ExtraAttribute extends BaseAttribute
      */
     public function valid(EntityContract $entity, $value)
     {
-        return v::length(1, 255)->validate($value);
+        $available = [
+            'Railken\LaraOre\Workers\EmailWorker' => ['to', 'body', 'subject'],
+        ][$entity->worker];
+
+        $diff = (new Collection($value))->keys()->diff($available);
+
+        return $diff->count() === 0;
     }
 }

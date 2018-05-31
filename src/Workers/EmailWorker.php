@@ -2,35 +2,13 @@
 namespace Railken\LaraOre\Workers;
 
 use Railken\Bag;
+use Railken\LaraOre\Template\Generators\TextGenerator;
 use Railken\LaraOre\Template\Generators\HtmlGenerator;
 use Railken\LaraOre\Work\Work;
 use Illuminate\Support\Facades\Mail;
 
 class EmailWorker extends BaseWorker
 {
-
-    /**
-     * @var HtmlGenerator
-     */
-    protected $htmlGenerator;
-
-    public function __construct()
-    {
-        $this->htmlGenerator = new HtmlGenerator();
-    }
-
-    /**
-     * Render twig
-     *
-     * @param string $raw
-     * @param array $data
-     *
-     * @return string
-     */
-    public function renderHtml(string $raw, array $data = [])
-    {
-        return $this->htmlGenerator->render($raw, $data);
-    }
 
     /**
      * Get options by work
@@ -45,10 +23,13 @@ class EmailWorker extends BaseWorker
         $bag = new Bag();
 
         $extra = new Bag($work->extra);
+
+        $textGenerator = new TextGenerator();
+        $htmlGenerator = new HtmlGenerator();
    
-        $bag->to = $this->renderHtml($extra->to, $data);
-        $bag->subject = $this->renderHtml($extra->subject, $data);
-        $bag->body = $this->renderHtml($extra->body, $data);
+        $bag->to = $textGenerator->render($extra->to, $data);
+        $bag->subject = $textGenerator->render($extra->subject, $data);
+        $bag->body = $htmlGenerator->render($extra->body, $data);
 
         return $bag;
     }

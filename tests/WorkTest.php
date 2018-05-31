@@ -28,7 +28,7 @@ class WorkTest extends BaseTest
     public function getParameters()
     {
         $bag = new bag();
-        $bag->set('name', 'a common name');
+        $bag->set('name', "El. psy. congroo. " . microtime(true));
         $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
 
         return $bag;

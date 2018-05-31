@@ -15,7 +15,16 @@ class Work extends Model implements EntityContract
      * @var array
      */
     protected $fillable = [
-        'name', 'worker'
+        'name', 'worker', 'extra'
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'extra' => 'array',
     ];
 
     /**

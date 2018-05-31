@@ -30,6 +30,11 @@ class WorkTest extends BaseTest
         $bag = new bag();
         $bag->set('name', "El. psy. congroo. " . microtime(true));
         $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
+        $bag->set('extra', [
+            'to' => "{{ user.email }}",
+            'subject' => "Welcome to the laboratory lab {{ user.name }}",
+            'body' => "{{ message }}"
+        ]);
 
         return $bag;
     }
@@ -42,7 +47,17 @@ class WorkTest extends BaseTest
 
     public function testWorkerEmail()
     {
-        $resource = $this->getManager()->create($this->getParameters())->getResource();
+        $work = $this->getManager()->create($this->getParameters())->getResource();
+
+
+        $this->getManager()->dispatch($work, [
+            'user' => [
+                'email' => 'test@test.net',
+                'name' => 'test'
+            ],
+            'message' => 'El. psy. congroo.'
+        ]);
+
         $this->assertEquals(1, 1);
     }
 }

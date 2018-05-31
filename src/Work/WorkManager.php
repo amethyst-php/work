@@ -25,7 +25,8 @@ class WorkManager extends ModelManager
         Attributes\Name\NameAttribute::class,
         Attributes\CreatedAt\CreatedAtAttribute::class,
         Attributes\UpdatedAt\UpdatedAtAttribute::class,
-        Attributes\Worker\WorkerAttribute::class
+        Attributes\Worker\WorkerAttribute::class,
+        Attributes\Extra\ExtraAttribute::class
     ];
 
     /**
@@ -50,5 +51,19 @@ class WorkManager extends ModelManager
         $this->setAuthorizer(new WorkAuthorizer($this));
 
         parent::__construct($agent);
+    }
+
+    /**
+     * Dispatch a work
+     *
+     * @param Work $work
+     * @param array $data
+     *
+     * @return void
+     */
+    public function dispatch(Work $work, array $data = [])
+    {
+        $worker = new $work->worker();
+        $worker->execute($work, $data);
     }
 }

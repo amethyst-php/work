@@ -49,11 +49,7 @@ class FileWorker extends BaseWorker
     public function execute(Work $work, array $data = [])
     {
         $options = $this->getOptionsByWork($work, $data);
-
-        $filename = sys_get_temp_dir() . "/" . $options->filename;
-        file_put_contents($filename, $options->content);
-
         $fm = new FileManager();
-        $result = $fm->uploadFile($filename);
+        $result = $fm->uploadFileByContent($options->content, $options->filename);
     }
 }

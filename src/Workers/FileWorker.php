@@ -2,8 +2,7 @@
 namespace Railken\LaraOre\Workers;
 
 use Railken\Bag;
-use Railken\LaraOre\Template\Generators\TextGenerator;
-use Railken\LaraOre\Template\Generators\HtmlGenerator;
+use Railken\LaraOre\Template\TemplateManager;
 use Railken\LaraOre\Work\Work;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
@@ -26,15 +25,12 @@ class FileWorker extends BaseWorker
 
         $extra = new Bag($work->extra);
 
+        $tm = new TemplateManager();
 
-        $textGenerator = new TextGenerator();
-        $bag->filename = $textGenerator->render($extra->filename, $data);
+        $bag->filename = $tm->renderRaw('text/plain', $extra->filename, $data);
         $bag->disk = $extra->disk;
-        $generator = Config::get('ore.template.generators')[$extra->generator];
 
-        $generator = new $generator;
-
-        $bag->content = $generator->render($extra->content, $data);
+        $bag->content = $tm->renderRaw($extra->filetype, $extra->content, $data);
         $bag->entity = null;
 
         if (isset($data['__model']) && isset($data['__model']['id']) && isset($data['__model']['type']) && class_exists($data['__model']['type'])) {

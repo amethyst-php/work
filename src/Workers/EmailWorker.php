@@ -2,8 +2,7 @@
 namespace Railken\LaraOre\Workers;
 
 use Railken\Bag;
-use Railken\LaraOre\Template\Generators\TextGenerator;
-use Railken\LaraOre\Template\Generators\HtmlGenerator;
+use Railken\LaraOre\Template\TemplateManager;
 use Railken\LaraOre\Work\Work;
 use Illuminate\Support\Facades\Mail;
 
@@ -24,12 +23,11 @@ class EmailWorker extends BaseWorker
 
         $extra = new Bag($work->extra);
 
-        $textGenerator = new TextGenerator();
-        $htmlGenerator = new HtmlGenerator();
-   
-        $bag->to = $textGenerator->render($extra->to, $data);
-        $bag->subject = $textGenerator->render($extra->subject, $data);
-        $bag->body = $htmlGenerator->render($extra->body, $data);
+        $tm = new TemplateManager();
+
+        $bag->to = $tm->renderRaw('text/plain', $extra->to, $data);
+        $bag->subject = $tm->renderRaw('text/plain', $extra->subject, $data);
+        $bag->body = $tm->renderRaw('application/pdf', $extra->body, $data);
 
         return $bag;
     }

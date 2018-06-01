@@ -22,7 +22,7 @@ return [
         [
             'worker' => \Railken\LaraOre\Workers\FileWorker::class,
             'data' => [
-                'filename', 'content', 'generator', 'tags'
+                'filename', 'filetype', 'content', 'tags'
             ]
         ]
     ]

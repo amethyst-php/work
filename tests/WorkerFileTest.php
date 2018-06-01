@@ -33,7 +33,7 @@ class WorkerFileTest extends BaseTest
         $bag->set('worker', 'Railken\LaraOre\Workers\FileWorker');
         $bag->set('extra', [
             'filename' => "{{ 'now'|date('Y-m-d') }}.pdf",
-            'generator' => 'application/pdf',
+            'filetype' => 'application/pdf',
             'content' => "{{ message }}",
             'tags' => 'pdf,hello,invoice'
         ]);

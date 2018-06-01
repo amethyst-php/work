@@ -62,7 +62,7 @@ class ExtraAttribute extends BaseAttribute
      */
     public function valid(EntityContract $entity, $value)
     {
-        $availables = (new Collection(Config::get('ore.work.workers')))->first(function($v) use ($entity) {
+        $availables = (new Collection(Config::get('ore.work.workers')))->first(function ($v) use ($entity) {
             return $v['worker'] === $entity->worker;
         });
 

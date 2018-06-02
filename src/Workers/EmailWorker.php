@@ -27,7 +27,7 @@ class EmailWorker extends BaseWorker
 
         $bag->to = $tm->renderRaw('text/plain', $extra->to, $data);
         $bag->subject = $tm->renderRaw('text/plain', $extra->subject, $data);
-        $bag->body = $tm->renderRaw('application/pdf', $extra->body, $data);
+        $bag->body = $tm->renderRaw('text/html', $extra->body, $data);
 
         return $bag;
     }

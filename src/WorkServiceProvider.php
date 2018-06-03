@@ -19,7 +19,7 @@ class WorkServiceProvider extends ServiceProvider
 
         if (!class_exists('CreateWorksTable')) {
             $this->publishes([
-                __DIR__.'/../database/migrations/create_works_table.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_works_table.php'),
+                __DIR__.'/../database/migrations/create_works_table.php.stub' => database_path('migrations/'.(new \DateTime())->format("Y_m_d_His.u").'_create_works_table.php'),
             ], 'migrations');
         }
     }

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Config;
 
 class CreateWorksTable extends Migration
 {
@@ -13,7 +14,7 @@ class CreateWorksTable extends Migration
      */
     public function up()
     {
-        Schema::create('ore_works', function (Blueprint $table) {
+        Schema::create(Config::get('ore.work.table'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('worker');
@@ -29,6 +30,6 @@ class CreateWorksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ore_works');
+        Schema::dropIfExists(Config::get('ore.work.table'));
     }
 }

@@ -17,11 +17,7 @@ class WorkServiceProvider extends ServiceProvider
             __DIR__.'/../config/ore.work.php' => config_path('ore.work.php'),
         ], 'config');
 
-        if (!class_exists('CreateWorksTable')) {
-            $this->publishes([
-                __DIR__.'/../database/migrations/create_works_table.php.stub' => database_path('migrations/'.(new \DateTime())->format("Y_m_d_His.u").'_create_works_table.php'),
-            ], 'migrations');
-        }
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**

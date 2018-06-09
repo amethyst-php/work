@@ -2,8 +2,8 @@
 
 namespace Railken\LaraOre;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\ServiceProvider;
 use Railken\LaraOre\Api\Support\Router;
 
 class WorkServiceProvider extends ServiceProvider
@@ -43,10 +43,10 @@ class WorkServiceProvider extends ServiceProvider
     }
 
     /**
-    * Load routes.
-    *
-    * @return void
-    */
+     * Load routes.
+     *
+     * @return void
+     */
     public function loadRoutes()
     {
         Router::group(array_merge(Config::get('ore.work.router'), [

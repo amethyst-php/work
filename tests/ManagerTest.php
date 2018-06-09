@@ -2,9 +2,8 @@
 
 namespace Railken\LaraOre\Work\Tests;
 
-use Railken\Bag;
-use Railken\LaraOre\Work\WorkManager;
 use Railken\LaraOre\Support\Testing\ManagerTestableTrait;
+use Railken\LaraOre\Work\WorkManager;
 
 class ManagerTest extends BaseTest
 {

@@ -23,26 +23,26 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
         parent::setUp();
 
-        File::cleanDirectory(database_path("migrations/"));
+        File::cleanDirectory(database_path('migrations/'));
 
         $this->artisan('vendor:publish', [
             '--provider' => 'Railken\LaraOre\WorkServiceProvider',
-            '--force' => true
+            '--force'    => true,
         ]);
 
         $this->artisan('vendor:publish', [
             '--provider' => 'Railken\LaraOre\TemplateServiceProvider',
-            '--force' => true
+            '--force'    => true,
         ]);
 
         $this->artisan('vendor:publish', [
             '--provider' => 'Spatie\MediaLibrary\MediaLibraryServiceProvider',
-            '--force' => true
+            '--force'    => true,
         ]);
-        
+
         $this->artisan('vendor:publish', [
             '--provider' => 'Railken\LaraOre\FileServiceProvider',
-            '--force' => true
+            '--force'    => true,
         ]);
 
         $this->artisan('migrate:fresh');

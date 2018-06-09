@@ -18,7 +18,6 @@ trait CommonTrait
 
         $this->assertEquals($resource->id, $manager->getRepository()->findOneById($resource->id)->id);
 
-
         $result = $manager->remove($resource);
         $this->assertEquals(true, $result->ok());
     }

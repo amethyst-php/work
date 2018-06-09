@@ -1,7 +1,6 @@
 <?php
-namespace Railken\LaraOre\Workers;
 
-use Railken\LaraOre\Work\Work;
+namespace Railken\LaraOre\Workers;
 
 class BaseWorker implements WorkerContract
 {

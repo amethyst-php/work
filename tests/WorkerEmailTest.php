@@ -7,7 +7,6 @@ use Railken\LaraOre\Work\WorkManager;
 
 class WorkerEmailTest extends BaseTest
 {
-    use Traits\CommonTrait;
 
     /**
      * Retrieve basic url.

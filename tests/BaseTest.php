@@ -3,6 +3,7 @@
 namespace Railken\LaraOre\Work\Tests;
 
 use Illuminate\Support\Facades\File;
+use Railken\Bag;
 
 abstract class BaseTest extends \Orchestra\Testbench\TestCase
 {
@@ -11,6 +12,25 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
         return [
             \Railken\LaraOre\WorkServiceProvider::class,
         ];
+    }
+
+    /**
+     * Retrieve correct bag of parameters.
+     *
+     * @return Bag
+     */
+    public function getParameters()
+    {
+        $bag = new bag();
+        $bag->set('name', 'El. psy. congroo. '.microtime(true));
+        $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
+        $bag->set('extra', [
+            'to'      => '{{ user.email }}',
+            'subject' => 'Welcome to the laboratory lab {{ user.name }}',
+            'body'    => '{{ message }}',
+        ]);
+
+        return $bag;
     }
 
     /**
@@ -24,6 +44,8 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
         parent::setUp();
 
         File::cleanDirectory(database_path('migrations/'));
+        $this->artisan('migrate:fresh');
+        $this->artisan('lara-ore:user:install');
 
         $this->artisan('vendor:publish', [
             '--provider' => 'Railken\LaraOre\WorkServiceProvider',
@@ -45,7 +67,6 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
             '--force'    => true,
         ]);
 
-        $this->artisan('migrate:fresh');
         $this->artisan('migrate');
     }
 }

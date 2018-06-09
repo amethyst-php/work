@@ -8,7 +8,6 @@ use Railken\LaraOre\Work\WorkManager;
 
 class WorkerFileTest extends BaseTest
 {
-    use Traits\CommonTrait;
 
     /**
      * Retrieve basic url.

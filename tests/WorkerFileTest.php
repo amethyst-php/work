@@ -3,13 +3,12 @@
 namespace Railken\LaraOre\Work\Tests;
 
 use Railken\Bag;
-use Railken\LaraOre\Work\WorkManager;
 use Railken\LaraOre\Work\Work;
+use Railken\LaraOre\Work\WorkManager;
 
 class WorkerFileTest extends BaseTest
 {
     use Traits\CommonTrait;
-
 
     /**
      * Retrieve basic url.
@@ -29,13 +28,13 @@ class WorkerFileTest extends BaseTest
     public function getParameters()
     {
         $bag = new bag();
-        $bag->set('name', "El. psy. congroo. " . microtime(true));
+        $bag->set('name', 'El. psy. congroo. '.microtime(true));
         $bag->set('worker', 'Railken\LaraOre\Workers\FileWorker');
         $bag->set('extra', [
             'filename' => "{{ 'now'|date('Y-m-d') }}.pdf",
             'filetype' => 'application/pdf',
-            'content' => "{{ message }}",
-            'tags' => 'pdf,hello,invoice'
+            'content'  => '{{ message }}',
+            'tags'     => 'pdf,hello,invoice',
         ]);
 
         return $bag;
@@ -44,13 +43,13 @@ class WorkerFileTest extends BaseTest
     public function testWorkerFile1()
     {
         $result = $this->getManager()->create($this->getParameters());
-        
+
         $this->assertEquals(true, $result->ok());
 
         $work = $result->getResource();
 
         $this->getManager()->dispatch($work, [
-            'message' => 'Hello'
+            'message' => 'Hello',
         ]);
     }
 
@@ -65,7 +64,7 @@ class WorkerFileTest extends BaseTest
 
         $this->getManager()->dispatch($work, [
             '__model' => ['id' => 1, 'type' => Work::class],
-            'message' => 'Hello'
+            'message' => 'Hello',
         ]);
     }
 }

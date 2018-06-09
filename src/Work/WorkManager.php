@@ -14,7 +14,7 @@ class WorkManager extends ModelManager
      * @var string
      */
     public $entity = Work::class;
-    
+
     /**
      * List of all attributes.
      *
@@ -26,7 +26,7 @@ class WorkManager extends ModelManager
         Attributes\CreatedAt\CreatedAtAttribute::class,
         Attributes\UpdatedAt\UpdatedAtAttribute::class,
         Attributes\Worker\WorkerAttribute::class,
-        Attributes\Extra\ExtraAttribute::class
+        Attributes\Extra\ExtraAttribute::class,
     ];
 
     /**
@@ -54,9 +54,9 @@ class WorkManager extends ModelManager
     }
 
     /**
-     * Dispatch a work
+     * Dispatch a work.
      *
-     * @param Work $work
+     * @param Work  $work
      * @param array $data
      *
      * @return void
@@ -64,7 +64,7 @@ class WorkManager extends ModelManager
     public function dispatch(Work $work, array $data = [])
     {
         $data = array_merge($data, [
-            'now' => new \DateTime()
+            'now' => new \DateTime(),
         ]);
 
         $worker = new $work->worker();

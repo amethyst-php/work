@@ -1,18 +1,18 @@
 <?php
+
 namespace Railken\LaraOre\Workers;
 
+use Illuminate\Support\Facades\Mail;
 use Railken\Bag;
 use Railken\LaraOre\Template\TemplateManager;
 use Railken\LaraOre\Work\Work;
-use Illuminate\Support\Facades\Mail;
 
 class EmailWorker extends BaseWorker
 {
-
     /**
-     * Get options by work
+     * Get options by work.
      *
-     * @param Work $work
+     * @param Work  $work
      * @param array $data
      *
      * @return Bag
@@ -33,9 +33,9 @@ class EmailWorker extends BaseWorker
     }
 
     /**
-     * Dispatch a work
+     * Dispatch a work.
      *
-     * @param Work $work
+     * @param Work  $work
      * @param array $data
      *
      * @return void

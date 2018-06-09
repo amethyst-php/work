@@ -2,11 +2,11 @@
 
 namespace Railken\LaraOre\Work\Attributes\Worker;
 
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Config;
 use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 use Railken\Laravel\Manager\Tokens;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Collection;
 
 class WorkerAttribute extends BaseAttribute
 {

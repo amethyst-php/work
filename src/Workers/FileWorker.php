@@ -1,20 +1,18 @@
 <?php
+
 namespace Railken\LaraOre\Workers;
 
 use Railken\Bag;
+use Railken\LaraOre\File\FileManager;
 use Railken\LaraOre\Template\TemplateManager;
 use Railken\LaraOre\Work\Work;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Storage;
-use Railken\LaraOre\File\FileManager;
 
 class FileWorker extends BaseWorker
 {
     /**
-     * Get options by work
+     * Get options by work.
      *
-     * @param Work $work
+     * @param Work  $work
      * @param array $data
      *
      * @return Bag
@@ -34,19 +32,18 @@ class FileWorker extends BaseWorker
         $bag->entity = null;
 
         if (isset($data['__model']) && isset($data['__model']['id']) && isset($data['__model']['type']) && class_exists($data['__model']['type'])) {
-            $bag->entity = (new $data['__model']['type'])->newQuery()->where('id', $data['__model']['id'])->first();
+            $bag->entity = (new $data['__model']['type']())->newQuery()->where('id', $data['__model']['id'])->first();
         }
 
-        $bag->tags = explode(",", $extra->tags);
+        $bag->tags = explode(',', $extra->tags);
 
         return $bag;
     }
 
-
     /**
-     * Dispatch a work
+     * Dispatch a work.
      *
-     * @param Work $work
+     * @param Work  $work
      * @param array $data
      *
      * @return void
@@ -59,7 +56,7 @@ class FileWorker extends BaseWorker
         $result = $fm->uploadFileByContent($options->content, $options->filename);
 
         $fm->update($result->getResource(), new Bag(['tags' => $options->tags]));
-        
+
         $options->entity && $fm->assignToModel($result->getResource(), $options->entity, []);
     }
 }

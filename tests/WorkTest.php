@@ -9,7 +9,6 @@ class WorkTest extends BaseTest
 {
     use Traits\CommonTrait;
 
-
     /**
      * Retrieve basic url.
      *
@@ -28,12 +27,12 @@ class WorkTest extends BaseTest
     public function getParameters()
     {
         $bag = new bag();
-        $bag->set('name', "El. psy. congroo. " . microtime(true));
+        $bag->set('name', 'El. psy. congroo. '.microtime(true));
         $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
         $bag->set('extra', [
-            'to' => "{{ user.email }}",
-            'subject' => "Welcome to the laboratory lab {{ user.name }}",
-            'body' => "{{ message }}"
+            'to'      => '{{ user.email }}',
+            'subject' => 'Welcome to the laboratory lab {{ user.name }}',
+            'body'    => '{{ message }}',
         ]);
 
         return $bag;

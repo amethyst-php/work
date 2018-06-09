@@ -3,19 +3,18 @@
 namespace Railken\LaraOre\Work;
 
 use Illuminate\Database\Eloquent\Model;
-use Railken\Laravel\Manager\Contracts\EntityContract;
 use Illuminate\Support\Facades\Config;
+use Railken\Laravel\Manager\Contracts\EntityContract;
 
 class Work extends Model implements EntityContract
 {
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'worker', 'extra'
+        'name', 'worker', 'extra',
     ];
 
     /**

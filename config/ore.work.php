@@ -15,15 +15,15 @@ return [
     'workers' => [
         [
             'worker' => \Railken\LaraOre\Workers\EmailWorker::class,
-            'data' => [
-                'to', 'body', 'subject'
+            'data'   => [
+                'to', 'body', 'subject',
             ],
         ],
         [
             'worker' => \Railken\LaraOre\Workers\FileWorker::class,
-            'data' => [
-                'filename', 'filetype', 'content', 'tags'
-            ]
-        ]
-    ]
+            'data'   => [
+                'filename', 'filetype', 'content', 'tags',
+            ],
+        ],
+    ],
 ];

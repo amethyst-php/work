@@ -54,7 +54,7 @@ class FileWorker extends BaseWorker
 
         $fm->update($result->getResource(), new Bag(['tags' => $options->tags]));
 
-        Collection::make($entities)->map(function($entity) use ($fm, $result) {
+        Collection::make($entities)->map(function ($entity) use ($fm, $result) {
             $fm->assignToModel($result->getResource(), $entity, []);
         });
     }

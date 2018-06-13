@@ -58,16 +58,13 @@ class WorkManager extends ModelManager
      *
      * @param Work  $work
      * @param array $data
+     * @param array $entities
      *
      * @return void
      */
-    public function dispatch(Work $work, array $data = [])
+    public function dispatch(Work $work, array $data = [], array $entities = [])
     {
-        $data = array_merge($data, [
-            'now' => new \DateTime(),
-        ]);
-
         $worker = new $work->worker();
-        $worker->execute($work, $data);
+        $worker->execute($work, $data, $entities);
     }
 }

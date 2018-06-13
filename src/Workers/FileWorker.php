@@ -6,6 +6,7 @@ use Railken\Bag;
 use Railken\LaraOre\File\FileManager;
 use Railken\LaraOre\Template\TemplateManager;
 use Railken\LaraOre\Work\Work;
+use Illuminate\Support\Collection;
 
 class FileWorker extends BaseWorker
 {
@@ -31,10 +32,6 @@ class FileWorker extends BaseWorker
         $bag->content = $tm->renderRaw($extra->filetype, $extra->content, $data);
         $bag->entity = null;
 
-        if (isset($data['__model']) && isset($data['__model']['id']) && isset($data['__model']['type']) && class_exists($data['__model']['type'])) {
-            $bag->entity = (new $data['__model']['type']())->newQuery()->where('id', $data['__model']['id'])->first();
-        }
-
         $bag->tags = explode(',', $extra->tags);
 
         return $bag;
@@ -48,7 +45,7 @@ class FileWorker extends BaseWorker
      *
      * @return void
      */
-    public function execute(Work $work, array $data = [])
+    public function execute(Work $work, array $data = [], array $entities = [])
     {
         $options = $this->getOptionsByWork($work, $data);
         $fm = new FileManager();
@@ -57,6 +54,8 @@ class FileWorker extends BaseWorker
 
         $fm->update($result->getResource(), new Bag(['tags' => $options->tags]));
 
-        $options->entity && $fm->assignToModel($result->getResource(), $options->entity, []);
+        Collection::make($entities)->map(function($entity) use ($fm, $result) {
+            $fm->assignToModel($result->getResource(), $entity, []);
+        });
     }
 }

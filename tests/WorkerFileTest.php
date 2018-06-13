@@ -61,8 +61,7 @@ class WorkerFileTest extends BaseTest
         $work = $result->getResource();
 
         $this->getManager()->dispatch($work, [
-            '__model' => ['id' => 1, 'type' => Work::class],
             'message' => 'Hello',
-        ]);
+        ], [$work]);
     }
 }

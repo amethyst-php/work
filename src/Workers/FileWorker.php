@@ -2,11 +2,11 @@
 
 namespace Railken\LaraOre\Workers;
 
+use Illuminate\Support\Collection;
 use Railken\Bag;
 use Railken\LaraOre\File\FileManager;
 use Railken\LaraOre\Template\TemplateManager;
 use Railken\LaraOre\Work\Work;
-use Illuminate\Support\Collection;
 
 class FileWorker extends BaseWorker
 {

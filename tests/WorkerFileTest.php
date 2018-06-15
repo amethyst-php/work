@@ -3,7 +3,6 @@
 namespace Railken\LaraOre\Work\Tests;
 
 use Railken\Bag;
-use Railken\LaraOre\Work\Work;
 use Railken\LaraOre\Work\WorkManager;
 
 class WorkerFileTest extends BaseTest

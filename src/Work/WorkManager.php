@@ -27,6 +27,7 @@ class WorkManager extends ModelManager
         Attributes\UpdatedAt\UpdatedAtAttribute::class,
         Attributes\Worker\WorkerAttribute::class,
         Attributes\Extra\ExtraAttribute::class,
+        Attributes\MockData\MockDataAttribute::class,
     ];
 
     /**

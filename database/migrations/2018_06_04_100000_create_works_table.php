@@ -19,6 +19,7 @@ class CreateWorksTable extends Migration
             $table->string('name');
             $table->string('worker');
             $table->text('extra');
+            $table->text('mock_data')->nullable();
             $table->timestamps();
         });
     }

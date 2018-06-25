@@ -24,6 +24,12 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
         $bag = new bag();
         $bag->set('name', 'El. psy. congroo. '.microtime(true));
         $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
+        $bag->set('mock_data', [
+            'user' => [
+                'email' => 'foo@foo.net'
+            ],
+            'message' => 'abc'
+        ]);
         $bag->set('extra', [
             'to'      => '{{ user.email }}',
             'subject' => 'Welcome to the laboratory lab {{ user.name }}',

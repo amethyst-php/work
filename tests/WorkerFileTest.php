@@ -27,6 +27,9 @@ class WorkerFileTest extends BaseTest
         $bag = new bag();
         $bag->set('name', 'El. psy. congroo. '.microtime(true));
         $bag->set('worker', 'Railken\LaraOre\Workers\FileWorker');
+        $bag->set('mock_data', [
+            'message' => 'abc'
+        ]);
         $bag->set('extra', [
             'filename' => "{{ 'now'|date('Y-m-d') }}.pdf",
             'filetype' => 'application/pdf',

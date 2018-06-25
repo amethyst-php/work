@@ -19,6 +19,7 @@ class WorksController extends RestController
         'name',
         'worker',
         'extra',
+        'mock_data',
         'created_at',
         'updated_at',
     ];
@@ -27,6 +28,7 @@ class WorksController extends RestController
         'name',
         'worker',
         'extra',
+        'mock_data',
     ];
 
     /**

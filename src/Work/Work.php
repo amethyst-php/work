@@ -14,7 +14,7 @@ class Work extends Model implements EntityContract
      * @var array
      */
     protected $fillable = [
-        'name', 'worker', 'extra',
+        'name', 'worker', 'extra', 'mock_data',
     ];
 
     /**
@@ -24,6 +24,7 @@ class Work extends Model implements EntityContract
      */
     protected $casts = [
         'extra' => 'array',
+        'mock_data' => 'array',
     ];
 
     /**

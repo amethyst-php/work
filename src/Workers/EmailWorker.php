@@ -25,9 +25,9 @@ class EmailWorker extends BaseWorker
 
         $tm = new TemplateManager();
 
-        $bag->to = $tm->renderRaw('text/plain', $extra->to, $data);
-        $bag->subject = $tm->renderRaw('text/plain', $extra->subject, $data);
-        $bag->body = $tm->renderRaw('text/html', $extra->body, $data);
+        $bag->set('to', $tm->renderRaw('text/plain', $extra->get('to'), $data));
+        $bag->set('subject', $tm->renderRaw('text/plain', $extra->get('subject'), $data));
+        $bag->set('body', $tm->renderRaw('text/html', $extra->get('body'), $data));
 
         return $bag;
     }
@@ -45,9 +45,9 @@ class EmailWorker extends BaseWorker
         $options = $this->getOptionsByWork($work, $data);
 
         Mail::send([], [], function ($message) use ($options) {
-            $message->to($options->to)
-                ->subject($options->subject)
-                ->setBody($options->body, 'text/html');
+            $message->to($options->get('to'))
+                ->subject($options->get('subject'))
+                ->setBody($options->get('body'), 'text/html');
         });
     }
 }

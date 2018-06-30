@@ -26,13 +26,13 @@ class FileWorker extends BaseWorker
 
         $tm = new TemplateManager();
 
-        $bag->filename = $tm->renderRaw('text/plain', $extra->filename, $data);
-        $bag->disk = $extra->disk;
+        $bag->set('filename', $tm->renderRaw('text/plain', $extra->get('filename'), $data));
+        $bag->set('disk', $extra->get('disk'));
 
-        $bag->content = $tm->renderRaw($extra->filetype, $extra->content, $data);
-        $bag->entity = null;
+        $bag->set('content', $tm->renderRaw($extra->get('filetype'), $extra->get('content'), $data));
+        $bag->set('entity', null);
 
-        $bag->tags = explode(',', $extra->tags);
+        $bag->set('tags', explode(',', $extra->get('tags')));
 
         return $bag;
     }
@@ -50,9 +50,9 @@ class FileWorker extends BaseWorker
         $options = $this->getOptionsByWork($work, $data);
         $fm = new FileManager();
 
-        $result = $fm->uploadFileByContent($options->content, $options->filename);
+        $result = $fm->uploadFileByContent($options->get('content'), $options->get('filename'));
 
-        $fm->update($result->getResource(), new Bag(['tags' => $options->tags]));
+        $fm->update($result->getResource(), new Bag(['tags' => $options->get('tags')]));
 
         Collection::make($entities)->map(function ($entity) use ($fm, $result) {
             $fm->assignToModel($result->getResource(), $entity, []);

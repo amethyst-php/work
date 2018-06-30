@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 
+/**
+ * @property string $name
+ * @property string $worker
+ * @property array $extra
+ * @property array $mock_data
+ */
 class Work extends Model implements EntityContract
 {
     /**

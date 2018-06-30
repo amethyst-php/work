@@ -7,9 +7,9 @@
         "railken/bag": "^1.2",
         "railken/laravel-manager": "^3.1",
         "guzzlehttp/guzzle": "^6.3",
+        "fzaninotto/faker": "^1.7",
         "railken/lara-ore-api": "dev-master",
         "railken/lara-ore-support": "dev-master",
-        "railken/lara-ore-user": "dev-master",
         "railken/lara-ore-template": "dev-master",
         "railken/lara-ore-file": "dev-master"
     },
@@ -17,7 +17,8 @@
         "phpunit/phpunit": "~7.0",
         "phpstan/phpstan": "^0.9",
         "orchestra/testbench": "~3.6",
-        "friendsofphp/php-cs-fixer": "^2.8"
+        "friendsofphp/php-cs-fixer": "^2.8",
+        "phpmetrics/phpmetrics": "^2.3"
     },
     "autoload": {
         "psr-4" : {

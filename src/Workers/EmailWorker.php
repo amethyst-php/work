@@ -9,6 +9,15 @@ use Railken\LaraOre\Work\Work;
 
 class EmailWorker extends BaseWorker
 {
+
+    /**
+     * @return array
+     */
+    public function getData()
+    {
+        return ['to', 'body', 'subject'];
+    }
+
     /**
      * Get options by work.
      *

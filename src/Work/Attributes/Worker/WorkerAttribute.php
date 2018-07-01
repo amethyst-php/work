@@ -62,8 +62,6 @@ class WorkerAttribute extends BaseAttribute
      */
     public function valid(EntityContract $entity, $value)
     {
-        return in_array($value, (new Collection(Config::get('ore.work.workers')))->map(function ($v) {
-            return $v['worker'];
-        })->toArray());
+        return in_array($value, Config::get('ore.work.workers'));
     }
 }

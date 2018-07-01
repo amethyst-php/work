@@ -11,6 +11,14 @@ use Railken\LaraOre\Work\Work;
 class FileWorker extends BaseWorker
 {
     /**
+     * @return array
+     */
+    public function getData()
+    {
+        return ['filename', 'filetype', 'content', 'tags'];
+    }
+
+    /**
      * Get options by work.
      *
      * @param Work  $work

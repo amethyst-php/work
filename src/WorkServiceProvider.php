@@ -48,14 +48,14 @@ class WorkServiceProvider extends ServiceProvider
      */
     public function loadRoutes()
     {
-        Router::group(array_merge(Config::get('ore.work.router'), [
-            'namespace' => 'Railken\LaraOre\Http\Controllers',
-        ]), function ($router) {
-            $router->get('/', ['uses' => 'WorksController@index']);
-            $router->post('/', ['uses' => 'WorksController@create']);
-            $router->put('/{id}', ['uses' => 'WorksController@update']);
-            $router->delete('/{id}', ['uses' => 'WorksController@remove']);
-            $router->get('/{id}', ['uses' => 'WorksController@show']);
+        Router::group(Config::get('ore.work.http.router'), function ($router) {
+            $controller = Config::get('ore.work.http.controller');
+            
+            $router->get('/', ['uses' => $controller . '@index']);
+            $router->post('/', ['uses' => $controller . '@create']);
+            $router->put('/{id}', ['uses' => $controller . '@update']);
+            $router->delete('/{id}', ['uses' => $controller . '@remove']);
+            $router->get('/{id}', ['uses' => $controller . '@show']);
         });
     }
 }

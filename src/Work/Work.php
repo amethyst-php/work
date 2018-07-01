@@ -41,6 +41,7 @@ class Work extends Model implements EntityContract
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->table = Config::get('ore.work.table', 'ore_works');
+        $this->table = \Illuminate\Support\Facades\Config::get('ore.work.table');
+        $this->fillable = array_merge($this->fillable, array_keys(Config::get('ore.work.attributes')));
     }
 }

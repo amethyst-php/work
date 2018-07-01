@@ -55,7 +55,7 @@ class ExtraAttribute extends BaseAttribute
     /**
      * Is a value valid ?
      *
-     * @param EntityContract $entity
+     * @param \Railken\LaraOre\Work\Work $entity
      * @param mixed          $value
      *
      * @return bool

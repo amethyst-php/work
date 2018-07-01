@@ -5,6 +5,7 @@ namespace Railken\LaraOre\Work;
 use Railken\Laravel\Manager\Contracts\AgentContract;
 use Railken\Laravel\Manager\ModelManager;
 use Railken\Laravel\Manager\Tokens;
+use Illuminate\Support\Facades\Config;
 
 class WorkManager extends ModelManager
 {
@@ -46,10 +47,20 @@ class WorkManager extends ModelManager
      */
     public function __construct(AgentContract $agent = null)
     {
-        $this->setRepository(new WorkRepository($this));
-        $this->setSerializer(new WorkSerializer($this));
-        $this->setValidator(new WorkValidator($this));
-        $this->setAuthorizer(new WorkAuthorizer($this));
+        $this->entity = Config::get('ore.work.entity');
+        $this->attributes = array_merge($this->attributes, array_values(Config::get('ore.work.attributes')));
+        
+        $classRepository = Config::get('ore.work.repository');
+        $this->setRepository(new $classRepository($this));
+
+        $classSerializer = Config::get('ore.work.serializer');
+        $this->setSerializer(new $classSerializer($this));
+
+        $classAuthorizer = Config::get('ore.work.authorizer');
+        $this->setAuthorizer(new $classAuthorizer($this));
+
+        $classValidator = Config::get('ore.work.validator');
+        $this->setValidator(new $classValidator($this));
 
         parent::__construct($agent);
     }

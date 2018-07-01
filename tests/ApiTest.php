@@ -4,6 +4,7 @@ namespace Railken\LaraOre\Work\Tests;
 
 use Illuminate\Support\Facades\Config;
 use Railken\LaraOre\Support\Testing\ApiTestableTrait;
+use Railken\LaraOre\Work\WorkFaker;
 
 class ApiTest extends BaseTest
 {
@@ -26,6 +27,6 @@ class ApiTest extends BaseTest
      */
     public function testSuccessCommon()
     {
-        $this->commonTest($this->getBaseUrl(), $parameters = $this->getParameters());
+        $this->commonTest($this->getBaseUrl(), WorkFaker::make());
     }
 }

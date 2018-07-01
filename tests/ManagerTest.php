@@ -4,6 +4,7 @@ namespace Railken\LaraOre\Work\Tests;
 
 use Railken\LaraOre\Support\Testing\ManagerTestableTrait;
 use Railken\LaraOre\Work\WorkManager;
+use Railken\LaraOre\Work\WorkFaker;
 
 class ManagerTest extends BaseTest
 {
@@ -21,6 +22,6 @@ class ManagerTest extends BaseTest
 
     public function testSuccessCommon()
     {
-        $this->commonTest($this->getManager(), $this->getParameters());
+        $this->commonTest($this->getManager(), WorkFaker::make());
     }
 }

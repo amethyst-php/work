@@ -4,6 +4,7 @@ namespace Railken\LaraOre\Work\Tests;
 
 use Railken\Bag;
 use Railken\LaraOre\Work\WorkManager;
+use Railken\LaraOre\Work\WorkFaker;
 
 class WorkerFileTest extends BaseTest
 {
@@ -16,33 +17,10 @@ class WorkerFileTest extends BaseTest
     {
         return new WorkManager();
     }
-
-    /**
-     * Retrieve correct bag of parameters.
-     *
-     * @return Bag
-     */
-    public function getParameters()
-    {
-        $bag = new bag();
-        $bag->set('name', 'El. psy. congroo. '.microtime(true));
-        $bag->set('worker', 'Railken\LaraOre\Workers\FileWorker');
-        $bag->set('mock_data', [
-            'message' => 'abc'
-        ]);
-        $bag->set('extra', [
-            'filename' => "{{ 'now'|date('Y-m-d') }}.pdf",
-            'filetype' => 'application/pdf',
-            'content'  => '{{ message }}',
-            'tags'     => 'pdf,hello,invoice',
-        ]);
-
-        return $bag;
-    }
-
+    
     public function testWorkerFile1()
     {
-        $result = $this->getManager()->create($this->getParameters());
+        $result = $this->getManager()->create(WorkFaker::makeWithFile());
 
         $this->assertEquals(true, $result->ok());
 
@@ -55,8 +33,8 @@ class WorkerFileTest extends BaseTest
 
     public function testWorkerFile2()
     {
-        $result = $this->getManager()->create($this->getParameters());
-        $result = $this->getManager()->create($this->getParameters());
+        $result = $this->getManager()->create(WorkFaker::makeWithFile());
+        $result = $this->getManager()->create(WorkFaker::makeWithFile());
 
         $this->assertEquals(true, $result->ok());
 

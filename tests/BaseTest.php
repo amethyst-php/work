@@ -15,31 +15,6 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
     }
 
     /**
-     * Retrieve correct bag of parameters.
-     *
-     * @return Bag
-     */
-    public function getParameters()
-    {
-        $bag = new bag();
-        $bag->set('name', 'El. psy. congroo. '.microtime(true));
-        $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
-        $bag->set('mock_data', [
-            'user' => [
-                'email' => 'foo@foo.net'
-            ],
-            'message' => 'abc'
-        ]);
-        $bag->set('extra', [
-            'to'      => '{{ user.email }}',
-            'subject' => 'Welcome to the laboratory lab {{ user.name }}',
-            'body'    => '{{ message }}',
-        ]);
-
-        return $bag;
-    }
-
-    /**
      * Setup the test environment.
      */
     public function setUp()

@@ -53,22 +53,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
         $this->artisan('migrate:fresh');
 
         $this->artisan('vendor:publish', [
-            '--provider' => 'Railken\LaraOre\WorkServiceProvider',
-            '--force'    => true,
-        ]);
-
-        $this->artisan('vendor:publish', [
-            '--provider' => 'Railken\LaraOre\TemplateServiceProvider',
-            '--force'    => true,
-        ]);
-
-        $this->artisan('vendor:publish', [
             '--provider' => 'Spatie\MediaLibrary\MediaLibraryServiceProvider',
-            '--force'    => true,
-        ]);
-
-        $this->artisan('vendor:publish', [
-            '--provider' => 'Railken\LaraOre\FileServiceProvider',
             '--force'    => true,
         ]);
 

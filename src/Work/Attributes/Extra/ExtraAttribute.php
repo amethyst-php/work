@@ -69,4 +69,16 @@ class ExtraAttribute extends BaseAttribute
 
         return $diff->count() === 0;
     }
+
+    /**
+     * Retrieve default value
+     *
+     * @param \Railken\Laravel\Manager\Contracts\EntityContract $entity
+     *
+     * @return mixed
+     */
+    public function getDefault(EntityContract $entity)
+    {
+        return [];
+    }
 }

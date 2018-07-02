@@ -21,6 +21,7 @@ class WorkServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadRoutes();
+        $this->commands([\Railken\LaraOre\Console\Commands\Work\WorkFireCommand::class]);
 
         config(['ore.permission.managers' => array_merge(Config::get('ore.permission.managers', []), [
             \Railken\LaraOre\Work\WorkManager::class,

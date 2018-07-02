@@ -9,8 +9,8 @@ use Railken\Laravel\Manager\Contracts\EntityContract;
 /**
  * @property string $name
  * @property string $worker
- * @property array $extra
- * @property array $mock_data
+ * @property object $extra
+ * @property object $mock_data
  */
 class Work extends Model implements EntityContract
 {

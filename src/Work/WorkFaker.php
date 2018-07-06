@@ -4,13 +4,19 @@ namespace Railken\LaraOre\Work;
 
 use Railken\Bag;
 use Faker\Factory;
+use Railken\Laravel\Manager\BaseFaker;
 
-class WorkFaker
+class WorkFaker extends BaseFaker
 {
     /**
-     * @return Bag
+     * @var string
      */
-    public static function make()
+    protected $manager = WorkManager::class;
+
+    /**
+     * @return \Railken\Bag
+     */
+    public function parameters()
     {
         $faker = Factory::create();
         
@@ -33,13 +39,13 @@ class WorkFaker
     }
 
     /**
-     * @return Bag
+     * @return \Railken\Bag
      */
-    public static function makeWithFile()
+    public function parametersWithFile()
     {
         $faker = Factory::create();
         
-        $bag = static::make();
+        $bag = $this->parameters();
         $bag->set('name', 'El. psy. congroo. '.microtime(true));
         $bag->set('worker', 'Railken\LaraOre\Workers\FileWorker');
         $bag->set('mock_data', [
@@ -56,13 +62,13 @@ class WorkFaker
     }
 
     /**
-     * @return Bag
+     * @return \Railken\Bag
      */
-    public static function makeWithEmail()
+    public function parametersWithEmail()
     {
         $faker = Factory::create();
         
-        $bag = static::make();
+        $bag = $this->parameters();
         $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
         $bag->set('extra', [
             'to'      => '{{ user.email }}',

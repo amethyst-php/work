@@ -20,7 +20,7 @@ class CommandsTest extends BaseTest
     
     public function testWorkerEmail()
     {
-        $result = $this->getManager()->create(WorkFaker::make());
+        $result = $this->getManager()->create(WorkFaker::make()->parameters());
 
         $this->assertEquals(true, $result->ok());
 

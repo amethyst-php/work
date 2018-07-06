@@ -20,7 +20,7 @@ class WorkerFileTest extends BaseTest
     
     public function testWorkerFile1()
     {
-        $result = $this->getManager()->create(WorkFaker::makeWithFile());
+        $result = $this->getManager()->create(WorkFaker::make()->parametersWithFile());
 
         $this->assertEquals(true, $result->ok());
 
@@ -33,8 +33,8 @@ class WorkerFileTest extends BaseTest
 
     public function testWorkerFile2()
     {
-        $result = $this->getManager()->create(WorkFaker::makeWithFile());
-        $result = $this->getManager()->create(WorkFaker::makeWithFile());
+        $result = $this->getManager()->create(WorkFaker::make()->parametersWithFile());
+        $result = $this->getManager()->create(WorkFaker::make()->parametersWithFile());
 
         $this->assertEquals(true, $result->ok());
 

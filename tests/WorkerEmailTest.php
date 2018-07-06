@@ -20,7 +20,7 @@ class WorkerEmailTest extends BaseTest
     
     public function testWorkerEmail()
     {
-        $work = $this->getManager()->create(WorkFaker::makeWithEmail())->getResource();
+        $work = $this->getManager()->create(WorkFaker::make()->parametersWithEmail())->getResource();
 
         $this->getManager()->dispatch($work, [
             'user' => [

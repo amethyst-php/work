@@ -27,7 +27,7 @@ class WorkerEmailTest extends BaseTest
                 'email' => 'test@test.net',
                 'name'  => 'test',
             ],
-            'message' => 'El. psy. congroo.',
+            'message' => 'text',
         ]);
 
         $this->assertEquals(1, 1);

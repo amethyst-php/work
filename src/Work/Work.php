@@ -29,7 +29,7 @@ class Work extends Model implements EntityContract
      * @var array
      */
     protected $casts = [
-        'extra' => 'object',
+        'extra'     => 'object',
         'mock_data' => 'object',
     ];
 

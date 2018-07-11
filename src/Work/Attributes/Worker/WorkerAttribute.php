@@ -2,7 +2,6 @@
 
 namespace Railken\LaraOre\Work\Attributes\Worker;
 
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;

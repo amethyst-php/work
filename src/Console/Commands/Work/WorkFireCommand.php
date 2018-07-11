@@ -35,11 +35,11 @@ class WorkFireCommand extends Command
         $work = $wm->getRepository()->findOneById($id);
 
         if ($work == null) {
-            $this->error(sprintf("No work found with id: %d", $id));
+            $this->error(sprintf('No work found with id: %d', $id));
 
             return;
         }
 
-        $wm->dispatch($work, (array)$work->mock_data, []);
+        $wm->dispatch($work, (array) $work->mock_data, []);
     }
 }

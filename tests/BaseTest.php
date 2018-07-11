@@ -29,7 +29,6 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
         $this->artisan('vendor:publish', [
             '--provider' => 'Spatie\MediaLibrary\MediaLibraryServiceProvider',
-            '--force'    => true,
         ]);
 
         $this->artisan('migrate');

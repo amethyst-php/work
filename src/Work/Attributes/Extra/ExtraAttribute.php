@@ -3,7 +3,6 @@
 namespace Railken\LaraOre\Work\Attributes\Extra;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Config;
 use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 use Railken\Laravel\Manager\Tokens;
@@ -56,13 +55,13 @@ class ExtraAttribute extends BaseAttribute
      * Is a value valid ?
      *
      * @param \Railken\LaraOre\Work\Work $entity
-     * @param mixed          $value
+     * @param mixed                      $value
      *
      * @return bool
      */
     public function valid(EntityContract $entity, $value)
     {
-        $worker = new $entity->worker;
+        $worker = new $entity->worker();
         $available = $worker->getData();
 
         $diff = (new Collection($value))->keys()->diff($available);
@@ -71,7 +70,7 @@ class ExtraAttribute extends BaseAttribute
     }
 
     /**
-     * Retrieve default value
+     * Retrieve default value.
      *
      * @param \Railken\Laravel\Manager\Contracts\EntityContract $entity
      *

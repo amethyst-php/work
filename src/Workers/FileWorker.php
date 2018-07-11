@@ -50,8 +50,6 @@ class FileWorker extends BaseWorker
      *
      * @param Work  $work
      * @param array $data
-     *
-     * @return void
      */
     public function execute(Work $work, array $data = [], array $entities = [])
     {

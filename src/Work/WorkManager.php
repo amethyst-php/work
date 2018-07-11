@@ -2,10 +2,10 @@
 
 namespace Railken\LaraOre\Work;
 
+use Illuminate\Support\Facades\Config;
 use Railken\Laravel\Manager\Contracts\AgentContract;
 use Railken\Laravel\Manager\ModelManager;
 use Railken\Laravel\Manager\Tokens;
-use Illuminate\Support\Facades\Config;
 
 class WorkManager extends ModelManager
 {
@@ -49,7 +49,7 @@ class WorkManager extends ModelManager
     {
         $this->entity = Config::get('ore.work.entity');
         $this->attributes = array_merge($this->attributes, array_values(Config::get('ore.work.attributes')));
-        
+
         $classRepository = Config::get('ore.work.repository');
         $this->setRepository(new $classRepository($this));
 
@@ -71,8 +71,6 @@ class WorkManager extends ModelManager
      * @param Work  $work
      * @param array $data
      * @param array $entities
-     *
-     * @return void
      */
     public function dispatch(Work $work, array $data = [], array $entities = [])
     {

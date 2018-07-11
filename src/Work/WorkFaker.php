@@ -2,8 +2,8 @@
 
 namespace Railken\LaraOre\Work;
 
-use Railken\Bag;
 use Faker\Factory;
+use Railken\Bag;
 use Railken\Laravel\Manager\BaseFaker;
 
 class WorkFaker extends BaseFaker
@@ -19,20 +19,24 @@ class WorkFaker extends BaseFaker
     public function parameters()
     {
         $faker = Factory::create();
-        
+
         $bag = new Bag();
         $bag->set('name', 'El. psy. congroo. '.microtime(true));
         $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
         $bag->set('mock_data', [
-            'user' => [
-                'email' => 'foo@foo.net'
-            ],
-            'message' => 'abc'
+            'user'    => 'Railken\LaraOre\User\UserFaker',
+            'message' => 'text',
         ]);
         $bag->set('extra', [
-            'to'      => '{{ user.email }}',
-            'subject' => 'Welcome to the laboratory lab {{ user.name }}',
-            'body'    => '{{ message }}',
+            'to'          => '{{ user.email }}',
+            'subject'     => 'Welcome to the laboratory lab {{ user.name }}',
+            'body'        => '{{ message }}',
+            'attachments' => [
+                [
+                    'as'       => '{{ user.name }}.txt',
+                    'source'   => 'file',
+                ],
+            ],
         ]);
 
         return $bag;
@@ -44,12 +48,12 @@ class WorkFaker extends BaseFaker
     public function parametersWithFile()
     {
         $faker = Factory::create();
-        
+
         $bag = $this->parameters();
         $bag->set('name', 'El. psy. congroo. '.microtime(true));
         $bag->set('worker', 'Railken\LaraOre\Workers\FileWorker');
         $bag->set('mock_data', [
-            'message' => 'abc'
+            'message' => 'abc',
         ]);
         $bag->set('extra', [
             'filename' => "{{ 'now'|date('Y-m-d') }}.pdf",
@@ -67,13 +71,19 @@ class WorkFaker extends BaseFaker
     public function parametersWithEmail()
     {
         $faker = Factory::create();
-        
+
         $bag = $this->parameters();
         $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
         $bag->set('extra', [
-            'to'      => '{{ user.email }}',
-            'subject' => 'Welcome to the laboratory lab {{ user.name }}',
-            'body'    => '{{ message }}',
+            'to'          => '{{ user.email }}',
+            'subject'     => 'Welcome to the laboratory lab {{ user.name }}',
+            'body'        => '{{ message }}',
+            'attachments' => [
+                [
+                    'as'       => '{{ user.name }}.txt',
+                    'source'   => 'file',
+                ],
+            ],
         ]);
 
         return $bag;

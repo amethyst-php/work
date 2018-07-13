@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\LaraOre\Work\Tests;
+namespace Railken\LaraOre\Tests\Work;
 
 use Illuminate\Support\Facades\Config;
 use Railken\LaraOre\Support\Testing\ApiTestableTrait;

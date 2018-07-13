@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\LaraOre\Work\Tests;
+namespace Railken\LaraOre\Tests\Work;
 
 use Railken\LaraOre\Support\Testing\ManagerTestableTrait;
 use Railken\LaraOre\Work\WorkManager;

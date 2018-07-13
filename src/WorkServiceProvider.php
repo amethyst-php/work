@@ -16,6 +16,9 @@ class WorkServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/ore.work.php' => config_path('ore.work.php'),
         ], 'config');
+        $this->publishes([
+            __DIR__.'/../config/ore.work-log.php' => config_path('ore.work-log.php'),
+        ], 'config');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadRoutes();
@@ -23,6 +26,7 @@ class WorkServiceProvider extends ServiceProvider
 
         config(['ore.permission.managers' => array_merge(Config::get('ore.permission.managers', []), [
             \Railken\LaraOre\Work\WorkManager::class,
+            \Railken\LaraOre\WorkLog\WorkLogManager::class,
         ])]);
     }
 
@@ -37,6 +41,7 @@ class WorkServiceProvider extends ServiceProvider
         $this->app->register(\Railken\LaraOre\FileServiceProvider::class);
         $this->app->register(\Railken\LaraOre\UserServiceProvider::class);
         $this->mergeConfigFrom(__DIR__.'/../config/ore.work.php', 'ore.work');
+        $this->mergeConfigFrom(__DIR__.'/../config/ore.work-log.php', 'ore.work-log');
     }
 
     /**
@@ -46,6 +51,16 @@ class WorkServiceProvider extends ServiceProvider
     {
         Router::group(Config::get('ore.work.http.router'), function ($router) {
             $controller = Config::get('ore.work.http.controller');
+
+            $router->get('/', ['uses' => $controller.'@index']);
+            $router->post('/', ['uses' => $controller.'@create']);
+            $router->put('/{id}', ['uses' => $controller.'@update']);
+            $router->delete('/{id}', ['uses' => $controller.'@remove']);
+            $router->get('/{id}', ['uses' => $controller.'@show']);
+        });
+
+        Router::group(Config::get('ore.work-log.http.router'), function ($router) {
+            $controller = Config::get('ore.work-log.http.controller');
 
             $router->get('/', ['uses' => $controller.'@index']);
             $router->post('/', ['uses' => $controller.'@create']);

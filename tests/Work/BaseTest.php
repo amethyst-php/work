@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\LaraOre\Work\Tests;
+namespace Railken\LaraOre\Tests\Work;
 
 use Illuminate\Support\Facades\File;
 use Railken\Bag;
@@ -19,7 +19,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
      */
     public function setUp()
     {
-        $dotenv = new \Dotenv\Dotenv(__DIR__.'/..', '.env');
+        $dotenv = new \Dotenv\Dotenv(__DIR__.'/../..', '.env');
         $dotenv->load();
 
         parent::setUp();

@@ -3,6 +3,7 @@
 namespace Railken\LaraOre\Work;
 
 use Illuminate\Support\Facades\Config;
+use Railken\LaraOre\Jobs\ProcessWork;
 use Railken\Laravel\Manager\Contracts\AgentContract;
 use Railken\Laravel\Manager\ModelManager;
 use Railken\Laravel\Manager\Tokens;
@@ -74,7 +75,6 @@ class WorkManager extends ModelManager
      */
     public function dispatch(Work $work, array $data = [], array $entities = [])
     {
-        $worker = new $work->worker();
-        $worker->execute($work, $data, $entities);
+        dispatch(new ProcessWork($work, $data, $entities));
     }
 }

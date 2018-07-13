@@ -66,13 +66,21 @@ class EmailWorker extends BaseWorker
             foreach ($options->get('attachments') as $attachment) {
                 if ($attachment['source'] !== null) {
                     $media = $attachment['source']->getFirstMedia();
+
+                    $source = null;
+
                     if ($media->disk === 's3') {
                         $source = $media->getTemporaryUrl((new \DateTime())->modify('+5 minutes'));
                     }
 
-                    if ($media->disk === 'local') {
+                    if ($media->disk === 'public' || $media->disk === 'local') {
                         $source = $media->getPath();
                     }
+
+                    if ($source === null) {
+                        throw new \Exception('source empty');
+                    }
+
                     $message->attach($source, ['as' => $attachment['as']]);
                 }
             }

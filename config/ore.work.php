@@ -132,6 +132,7 @@ return [
     'workers' => [
         \Railken\LaraOre\Workers\EmailWorker::class,
         \Railken\LaraOre\Workers\FileWorker::class,
+        \Railken\LaraOre\Workers\HttpWorker::class,
     ],
 
 

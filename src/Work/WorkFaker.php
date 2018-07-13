@@ -88,4 +88,28 @@ class WorkFaker extends BaseFaker
 
         return $bag;
     }
+
+    /**
+     * @return \Railken\Bag
+     */
+    public function parametersWithHttp()
+    {
+        $faker = Factory::create();
+
+        $bag = $this->parameters();
+        $bag->set('worker', 'Railken\LaraOre\Workers\HttpWorker');
+        $bag->set('extra', [
+            'method'      => 'POST',
+            'url'         => 'https://jsonplaceholder.typicode.com/posts',
+            'options'     => [
+                'form_params' => [
+                    [
+                        'name'       => '{{ user.name }}',
+                    ],
+                ],
+            ],
+        ]);
+
+        return $bag;
+    }
 }

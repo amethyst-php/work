@@ -13,7 +13,7 @@ class WorkLog extends Model implements EntityContract
      *
      * @var array
      */
-    protected $fillable = ['extra'];
+    protected $fillable = ['extra', 'worker', 'work_name'];
 
     /**
      * The attributes that should be mutated to dates.

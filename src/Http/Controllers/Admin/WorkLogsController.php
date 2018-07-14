@@ -27,6 +27,8 @@ class WorkLogsController extends RestConfigurableController
      */
     public $queryable = [
         'id',
+        'work_name',
+        'worker',
         'extra',
         'created_at',
         'updated_at',
@@ -38,6 +40,8 @@ class WorkLogsController extends RestConfigurableController
      * @var array
      */
     public $fillable = [
+        'work_name',
+        'worker',
         'extra',
     ];
 }

@@ -16,6 +16,8 @@ class CreateWorkLogsTable extends Migration
     {
         Schema::create(Config::get('ore.work-log.table'), function (Blueprint $table) {
             $table->increments('id');
+            $table->string('work_name')->nullable();
+            $table->string('worker');
             $table->text('extra')->nullable();
             $table->timestamps();
         });

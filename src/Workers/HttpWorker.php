@@ -51,6 +51,16 @@ class HttpWorker extends BaseWorker
         $options = $this->getOptionsByWork($work, $data);
 
         $client = new Client();
-        $client->request($options->get('method'), $options->get('url'), $options->get('options'));
+        $response = $client->request($options->get('method'), $options->get('url'), $options->get('options'));
+
+        $this->log($work, [
+            'method'      => $options->get('method'),
+            'url'         => $options->get('url'),
+            'options'     => $options->get('options'),
+            'response'    => [
+                'status' => $response->getStatusCode(),
+                'body'   => (string) $response->getBody(),
+            ],
+        ]);
     }
 }

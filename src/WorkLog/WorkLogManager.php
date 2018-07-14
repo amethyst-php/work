@@ -26,6 +26,8 @@ class WorkLogManager extends ModelManager
         Attributes\CreatedAt\CreatedAtAttribute::class,
         Attributes\UpdatedAt\UpdatedAtAttribute::class,
         Attributes\Extra\ExtraAttribute::class,
+        Attributes\Worker\WorkerAttribute::class,
+        Attributes\WorkName\WorkNameAttribute::class,
     ];
 
     /**

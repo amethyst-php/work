@@ -63,5 +63,10 @@ class FileWorker extends BaseWorker
         Collection::make($entities)->map(function ($entity) use ($fm, $result) {
             $fm->assignToModel($result->getResource(), $entity, []);
         });
+
+        $this->log($work, [
+            'filename'      => $options->get('filename'),
+            'tags'          => $options->get('tags'),
+        ]);
     }
 }

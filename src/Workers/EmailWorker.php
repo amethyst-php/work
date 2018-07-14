@@ -85,5 +85,11 @@ class EmailWorker extends BaseWorker
                 }
             }
         });
+
+        $this->log($work, [
+            'to'      => $options->get('to'),
+            'subject' => $options->get('subject'),
+            'body'    => $options->get('body'),
+        ]);
     }
 }

@@ -24,7 +24,10 @@ class WorkFaker extends BaseFaker
         $bag->set('name', 'El. psy. congroo. '.microtime(true));
         $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
         $bag->set('mock_data', [
-            'user'    => 'Railken\LaraOre\User\UserFaker',
+            'user'    => [
+                'email' => $faker->email,
+                'name'  => $faker->name,
+            ],
             'message' => 'text',
         ]);
         $bag->set('extra', [

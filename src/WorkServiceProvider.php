@@ -39,7 +39,6 @@ class WorkServiceProvider extends ServiceProvider
         $this->app->register(\Railken\LaraOre\ApiServiceProvider::class);
         $this->app->register(\Railken\LaraOre\TemplateServiceProvider::class);
         $this->app->register(\Railken\LaraOre\FileServiceProvider::class);
-        $this->app->register(\Railken\LaraOre\UserServiceProvider::class);
         $this->mergeConfigFrom(__DIR__.'/../config/ore.work.php', 'ore.work');
         $this->mergeConfigFrom(__DIR__.'/../config/ore.work-log.php', 'ore.work-log');
     }

@@ -72,6 +72,6 @@ class MockDataAttribute extends BaseAttribute
      */
     public function getDefault(EntityContract $entity)
     {
-        return [];
+        return (object) [];
     }
 }

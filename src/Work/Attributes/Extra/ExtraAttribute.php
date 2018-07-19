@@ -78,6 +78,6 @@ class ExtraAttribute extends BaseAttribute
      */
     public function getDefault(EntityContract $entity)
     {
-        return [];
+        return (object) [];
     }
 }

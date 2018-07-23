@@ -33,7 +33,7 @@ class EmailWorker extends BaseWorker
 
         $tm = new TemplateManager();
 
-        $bag->set('to', $tm->renderRaw('text/plain', $extra->get('to'), $data));
+        $bag->set('to', explode(',', $tm->renderRaw('text/plain', $extra->get('to'), $data)));
         $bag->set('subject', $tm->renderRaw('text/plain', $extra->get('subject'), $data));
         $bag->set('body', $tm->renderRaw('text/html', $extra->get('body'), $data));
         $attachments = [];

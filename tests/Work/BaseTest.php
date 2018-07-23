@@ -3,17 +3,9 @@
 namespace Railken\LaraOre\Tests\Work;
 
 use Illuminate\Support\Facades\File;
-use Railken\Bag;
 
 abstract class BaseTest extends \Orchestra\Testbench\TestCase
 {
-    protected function getPackageProviders($app)
-    {
-        return [
-            \Railken\LaraOre\WorkServiceProvider::class,
-        ];
-    }
-
     /**
      * Setup the test environment.
      */
@@ -32,5 +24,12 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
         ]);
 
         $this->artisan('migrate');
+    }
+
+    protected function getPackageProviders($app)
+    {
+        return [
+            \Railken\LaraOre\WorkServiceProvider::class,
+        ];
     }
 }

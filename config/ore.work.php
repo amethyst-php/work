@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Table Name
@@ -93,11 +92,9 @@ return [
     |
     */
     'attributes' => [
-
     ],
 
     'http' => [
-
         /*
         |--------------------------------------------------------------------------
         | Class name controller
@@ -107,7 +104,7 @@ return [
         |
         */
         'controller' => Railken\LaraOre\Http\Controllers\Admin\WorksController::class,
-        
+
         /*
         |--------------------------------------------------------------------------
         | Router Options
@@ -134,6 +131,4 @@ return [
         \Railken\LaraOre\Workers\FileWorker::class,
         \Railken\LaraOre\Workers\HttpWorker::class,
     ],
-
-
 ];

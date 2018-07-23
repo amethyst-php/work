@@ -2,10 +2,8 @@
 
 namespace Railken\LaraOre\Tests\Work;
 
-use Railken\Bag;
-use Railken\LaraOre\Work\WorkManager;
 use Railken\LaraOre\Work\WorkFaker;
-use Railken\LaraOre\File\FileManager;
+use Railken\LaraOre\Work\WorkManager;
 
 class WorkerHttpTest extends BaseTest
 {
@@ -18,7 +16,7 @@ class WorkerHttpTest extends BaseTest
     {
         return new WorkManager();
     }
-    
+
     public function testWorkerHttp()
     {
         $work = $this->getManager()->create(WorkFaker::make()->parametersWithHttp())->getResource();

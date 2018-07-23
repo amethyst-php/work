@@ -2,10 +2,9 @@
 
 namespace Railken\LaraOre\Tests\Work;
 
-use Railken\Bag;
-use Railken\LaraOre\Work\WorkManager;
-use Railken\LaraOre\Work\WorkFaker;
 use Railken\LaraOre\File\FileManager;
+use Railken\LaraOre\Work\WorkFaker;
+use Railken\LaraOre\Work\WorkManager;
 
 class WorkerEmailTest extends BaseTest
 {
@@ -18,13 +17,13 @@ class WorkerEmailTest extends BaseTest
     {
         return new WorkManager();
     }
-    
+
     public function testWorkerEmail()
     {
         $work = $this->getManager()->create(WorkFaker::make()->parametersWithEmail())->getResource();
 
         $fm = new FileManager();
-        $result = $fm->uploadFileByContent("hello my friend", "welcome.txt");
+        $result = $fm->uploadFileByContent('hello my friend', 'welcome.txt');
         $file = $result->getResource();
 
         $this->getManager()->dispatch($work, [
@@ -33,7 +32,7 @@ class WorkerEmailTest extends BaseTest
                 'name'  => 'test',
             ],
             'message' => 'text',
-            'file' => $file
+            'file'    => $file,
         ]);
 
         $this->assertEquals(1, 1);

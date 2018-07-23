@@ -2,9 +2,8 @@
 
 namespace Railken\LaraOre\Tests\Work;
 
-use Railken\Bag;
-use Railken\LaraOre\Work\WorkManager;
 use Railken\LaraOre\Work\WorkFaker;
+use Railken\LaraOre\Work\WorkManager;
 
 class WorkerFileTest extends BaseTest
 {
@@ -17,7 +16,7 @@ class WorkerFileTest extends BaseTest
     {
         return new WorkManager();
     }
-    
+
     public function testWorkerFile1()
     {
         $result = $this->getManager()->create(WorkFaker::make()->parametersWithFile());

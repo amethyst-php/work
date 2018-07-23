@@ -3,8 +3,8 @@
 namespace Railken\LaraOre\Tests\WorkLog;
 
 use Railken\LaraOre\Support\Testing\ManagerTestableTrait;
-use Railken\LaraOre\WorkLog\WorkLogManager;
 use Railken\LaraOre\WorkLog\WorkLogFaker;
+use Railken\LaraOre\WorkLog\WorkLogManager;
 
 class ManagerTest extends BaseTest
 {

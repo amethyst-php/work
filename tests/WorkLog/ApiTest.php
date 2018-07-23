@@ -22,8 +22,6 @@ class ApiTest extends BaseTest
 
     /**
      * Test common requests.
-     *
-     * @return void
      */
     public function testSuccessCommon()
     {

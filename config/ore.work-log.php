@@ -107,7 +107,7 @@ return [
             'enabled'    => true,
             'controller' => Railken\LaraOre\Http\Controllers\Admin\WorkLogsController::class,
             'router'     => [
-                'prefix'      => '/admin/work-logs',
+                'prefix'      => '/work-logs',
             ],
         ],
     ],

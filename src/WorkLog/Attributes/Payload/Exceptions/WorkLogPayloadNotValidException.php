@@ -1,29 +1,29 @@
 <?php
 
-namespace Railken\LaraOre\WorkLog\Attributes\Worker\Exceptions;
+namespace Railken\LaraOre\WorkLog\Attributes\Payload\Exceptions;
 
 use Railken\LaraOre\WorkLog\Exceptions\WorkLogAttributeException;
 
-class WorkLogWorkerNotDefinedException extends WorkLogAttributeException
+class WorkLogPayloadNotValidException extends WorkLogAttributeException
 {
     /**
      * The reason (attribute) for which this exception is thrown.
      *
      * @var string
      */
-    protected $attribute = 'worker';
+    protected $attribute = 'payload';
 
     /**
      * The code to identify the error.
      *
      * @var string
      */
-    protected $code = 'WORKLOG_WORKER_NOT_DEFINED';
+    protected $code = 'WORKLOG_PAYLOAD_NOT_VALID';
 
     /**
      * The message.
      *
      * @var string
      */
-    protected $message = 'The %s is required';
+    protected $message = 'The %s is not valid';
 }

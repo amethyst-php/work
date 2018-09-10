@@ -1,24 +1,24 @@
 <?php
 
-namespace Railken\LaraOre\Work\Attributes\MockData\Exceptions;
+namespace Railken\LaraOre\WorkLog\Attributes\Payload\Exceptions;
 
-use Railken\LaraOre\Work\Exceptions\WorkAttributeException;
+use Railken\LaraOre\WorkLog\Exceptions\WorkLogAttributeException;
 
-class WorkMockDataNotAuthorizedException extends WorkAttributeException
+class WorkLogPayloadNotAuthorizedException extends WorkLogAttributeException
 {
     /**
      * The reason (attribute) for which this exception is thrown.
      *
      * @var string
      */
-    protected $attribute = 'mock_data';
+    protected $attribute = 'payload';
 
     /**
      * The code to identify the error.
      *
      * @var string
      */
-    protected $code = 'WORK_MOCK_DATA_NOT_AUTHTORIZED';
+    protected $code = 'WORKLOG_PAYLOAD_NOT_AUTHTORIZED';
 
     /**
      * The message.

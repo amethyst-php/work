@@ -1,24 +1,24 @@
 <?php
 
-namespace Railken\LaraOre\Work\Attributes\Extra\Exceptions;
+namespace Railken\LaraOre\WorkLog\Attributes\Data\Exceptions;
 
-use Railken\LaraOre\Work\Exceptions\WorkAttributeException;
+use Railken\LaraOre\WorkLog\Exceptions\WorkLogAttributeException;
 
-class WorkExtraNotValidException extends WorkAttributeException
+class WorkLogDataNotValidException extends WorkLogAttributeException
 {
     /**
      * The reason (attribute) for which this exception is thrown.
      *
      * @var string
      */
-    protected $attribute = 'extra';
+    protected $attribute = 'data';
 
     /**
      * The code to identify the error.
      *
      * @var string
      */
-    protected $code = 'WORK_EXTRA_NOT_VALID';
+    protected $code = 'WORKLOG_DATA_NOT_VALID';
 
     /**
      * The message.

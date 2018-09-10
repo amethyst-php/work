@@ -2,6 +2,8 @@
 
 namespace Railken\LaraOre\Tests\Work;
 
+use Railken\LaraOre\EmailSender\EmailSenderFaker;
+use Railken\LaraOre\EmailSender\EmailSenderManager;
 use Railken\LaraOre\File\FileManager;
 use Railken\LaraOre\Work\WorkFaker;
 use Railken\LaraOre\Work\WorkManager;
@@ -20,7 +22,10 @@ class WorkerEmailTest extends BaseTest
 
     public function testWorkerEmail()
     {
-        $work = $this->getManager()->create(WorkFaker::make()->parametersWithEmail())->getResource();
+        $esm = new EmailSenderManager();
+        $es = $esm->create(EmailSenderFaker::make()->parameters()->set('body', '{{ user.name }}'))->getResource();
+
+        $work = $this->getManager()->create(WorkFaker::make()->parametersWithEmail()->set('payload.data.id', $es->id))->getResource();
 
         $fm = new FileManager();
         $result = $fm->uploadFileByContent('hello my friend', 'welcome.txt');
@@ -29,7 +34,7 @@ class WorkerEmailTest extends BaseTest
         $this->getManager()->dispatch($work, [
             'user' => [
                 'email' => 'test@test.net',
-                'name'  => 'test',
+                'name'  => 'hello',
             ],
             'message' => 'text',
             'file'    => $file,

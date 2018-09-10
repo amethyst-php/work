@@ -1,19 +1,19 @@
 <?php
 
-namespace Railken\LaraOre\WorkLog\Attributes\Extra;
+namespace Railken\LaraOre\WorkLog\Attributes\Payload;
 
 use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 use Railken\Laravel\Manager\Tokens;
 
-class ExtraAttribute extends BaseAttribute
+class PayloadAttribute extends BaseAttribute
 {
     /**
      * Name attribute.
      *
      * @var string
      */
-    protected $name = 'extra';
+    protected $name = 'payload';
 
     /**
      * Is the attribute required
@@ -36,18 +36,18 @@ class ExtraAttribute extends BaseAttribute
      * @var array
      */
     protected $exceptions = [
-        Tokens::NOT_DEFINED    => Exceptions\WorkLogExtraNotDefinedException::class,
-        Tokens::NOT_VALID      => Exceptions\WorkLogExtraNotValidException::class,
-        Tokens::NOT_AUTHORIZED => Exceptions\WorkLogExtraNotAuthorizedException::class,
-        Tokens::NOT_UNIQUE     => Exceptions\WorkLogExtraNotUniqueException::class,
+        Tokens::NOT_DEFINED    => Exceptions\WorkLogPayloadNotDefinedException::class,
+        Tokens::NOT_VALID      => Exceptions\WorkLogPayloadNotValidException::class,
+        Tokens::NOT_AUTHORIZED => Exceptions\WorkLogPayloadNotAuthorizedException::class,
+        Tokens::NOT_UNIQUE     => Exceptions\WorkLogPayloadNotUniqueException::class,
     ];
 
     /**
      * List of all permissions.
      */
     protected $permissions = [
-        Tokens::PERMISSION_FILL => 'worklog.attributes.extra.fill',
-        Tokens::PERMISSION_SHOW => 'worklog.attributes.extra.show',
+        Tokens::PERMISSION_FILL => 'worklog.attributes.payload.fill',
+        Tokens::PERMISSION_SHOW => 'worklog.attributes.payload.show',
     ];
 
     /**

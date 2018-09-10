@@ -21,26 +21,8 @@ class WorkFaker extends BaseFaker
         $faker = Factory::create();
 
         $bag = new Bag();
-        $bag->set('name', 'El. psy. congroo. '.microtime(true));
-        $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
-        $bag->set('mock_data', [
-            'user'    => [
-                'email' => $faker->email,
-                'name'  => $faker->name,
-            ],
-            'message' => 'text',
-        ]);
-        $bag->set('extra', [
-            'to'          => '{{ user.email }}',
-            'subject'     => 'Welcome to the laboratory lab {{ user.name }}',
-            'body'        => '{{ message }}',
-            'attachments' => [
-                [
-                    'as'       => '{{ user.name }}.txt',
-                    'source'   => 'file',
-                ],
-            ],
-        ]);
+        $bag->set('name', $faker->name);
+        $bag->set('payload', ['dummy' => 'dummy']);
 
         return $bag;
     }
@@ -53,16 +35,11 @@ class WorkFaker extends BaseFaker
         $faker = Factory::create();
 
         $bag = $this->parameters();
-        $bag->set('name', 'El. psy. congroo. '.microtime(true));
-        $bag->set('worker', 'Railken\LaraOre\Workers\FileWorker');
-        $bag->set('mock_data', [
-            'message' => 'abc',
-        ]);
-        $bag->set('extra', [
-            'filename' => "{{ 'now'|date('Y-m-d') }}.pdf",
-            'filetype' => 'application/pdf',
-            'content'  => '{{ message }}',
-            'tags'     => 'pdf,hello,invoice',
+        $bag->set('payload', [
+            'class' => 'Railken\LaraOre\Workers\FileWorker',
+            'data'  => [
+                'id' => 1,
+            ],
         ]);
 
         return $bag;
@@ -76,40 +53,10 @@ class WorkFaker extends BaseFaker
         $faker = Factory::create();
 
         $bag = $this->parameters();
-        $bag->set('worker', 'Railken\LaraOre\Workers\EmailWorker');
-        $bag->set('extra', [
-            'to'          => '{{ user.email }}',
-            'subject'     => 'Welcome to the laboratory lab {{ user.name }}',
-            'body'        => '{{ message }}',
-            'attachments' => [
-                [
-                    'as'       => '{{ user.name }}.txt',
-                    'source'   => 'file',
-                ],
-            ],
-        ]);
-
-        return $bag;
-    }
-
-    /**
-     * @return \Railken\Bag
-     */
-    public function parametersWithHttp()
-    {
-        $faker = Factory::create();
-
-        $bag = $this->parameters();
-        $bag->set('worker', 'Railken\LaraOre\Workers\HttpWorker');
-        $bag->set('extra', [
-            'method'      => 'POST',
-            'url'         => 'https://jsonplaceholder.typicode.com/posts',
-            'options'     => [
-                'form_params' => [
-                    [
-                        'name'       => '{{ user.name }}',
-                    ],
-                ],
+        $bag->set('payload', [
+            'class' => 'Railken\LaraOre\Workers\EmailWorker',
+            'data'  => [
+                'id' => 1,
             ],
         ]);
 

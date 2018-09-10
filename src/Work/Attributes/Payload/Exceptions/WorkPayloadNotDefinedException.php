@@ -1,29 +1,29 @@
 <?php
 
-namespace Railken\LaraOre\Work\Attributes\MockData\Exceptions;
+namespace Railken\LaraOre\Work\Attributes\Payload\Exceptions;
 
 use Railken\LaraOre\Work\Exceptions\WorkAttributeException;
 
-class WorkMockDataNotValidException extends WorkAttributeException
+class WorkPayloadNotDefinedException extends WorkAttributeException
 {
     /**
      * The reason (attribute) for which this exception is thrown.
      *
      * @var string
      */
-    protected $attribute = 'mock_data';
+    protected $attribute = 'payload';
 
     /**
      * The code to identify the error.
      *
      * @var string
      */
-    protected $code = 'WORK_MOCK_DATA_NOT_VALID';
+    protected $code = 'WORK_PAYLOAD_NOT_DEFINED';
 
     /**
      * The message.
      *
      * @var string
      */
-    protected $message = 'The %s is not valid';
+    protected $message = 'The %s is required';
 }

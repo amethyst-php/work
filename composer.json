@@ -11,7 +11,11 @@
         "railken/lara-ore-api": "dev-master",
         "railken/lara-ore-support": "dev-master",
         "railken/lara-ore-template": "dev-master",
-        "railken/lara-ore-file": "dev-master"
+        "railken/lara-ore-file": "dev-master",
+        "railken/lara-ore-file-generator": "dev-master",
+        "railken/lara-ore-email-sender": "dev-master",
+        "railken/lara-ore-repository": "dev-master",
+        "railken/lara-ore-data-builder": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.0",

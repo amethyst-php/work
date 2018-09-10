@@ -11,9 +11,7 @@ class BaseWorker implements WorkerContract
     public function log(Work $work, array $parameters)
     {
         $bag = new Bag();
-        $bag->set('extra', $parameters);
         $bag->set('work_name', $work->name);
-        $bag->set('worker', $work->worker);
 
         $manager = new WorkLogManager();
         $manager->create($bag);

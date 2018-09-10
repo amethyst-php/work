@@ -8,9 +8,7 @@ use Railken\Laravel\Manager\Contracts\EntityContract;
 
 /**
  * @property string $name
- * @property string $worker
- * @property object $extra
- * @property object $mock_data
+ * @property object $payload
  */
 class Work extends Model implements EntityContract
 {
@@ -20,7 +18,7 @@ class Work extends Model implements EntityContract
      * @var array
      */
     protected $fillable = [
-        'name', 'worker', 'extra', 'mock_data',
+        'name', 'payload',
     ];
 
     /**
@@ -29,8 +27,7 @@ class Work extends Model implements EntityContract
      * @var array
      */
     protected $casts = [
-        'extra'     => 'object',
-        'mock_data' => 'object',
+        'payload'     => 'object',
     ];
 
     /**

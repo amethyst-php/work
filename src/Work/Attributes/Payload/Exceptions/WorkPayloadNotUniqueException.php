@@ -1,29 +1,29 @@
 <?php
 
-namespace Railken\LaraOre\Work\Attributes\MockData\Exceptions;
+namespace Railken\LaraOre\Work\Attributes\Payload\Exceptions;
 
 use Railken\LaraOre\Work\Exceptions\WorkAttributeException;
 
-class WorkMockDataNotDefinedException extends WorkAttributeException
+class WorkPayloadNotUniqueException extends WorkAttributeException
 {
     /**
      * The reason (attribute) for which this exception is thrown.
      *
      * @var string
      */
-    protected $attribute = 'mock_data';
+    protected $attribute = 'payload';
 
     /**
      * The code to identify the error.
      *
      * @var string
      */
-    protected $code = 'WORK_MOCK_DATA_NOT_DEFINED';
+    protected $code = 'WORK_PAYLOAD_NOT_UNIQUE';
 
     /**
      * The message.
      *
      * @var string
      */
-    protected $message = 'The %s is required';
+    protected $message = 'The %s is not unique';
 }

@@ -23,9 +23,8 @@ class WorkServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadRoutes();
-        $this->commands([\Railken\LaraOre\Console\Commands\Work\WorkFireCommand::class]);
 
-        config(['ore.permission.managers' => array_merge(Config::get('ore.permission.managers', []), [
+        config(['ore.managers' => array_merge(Config::get('ore.managers', []), [
             \Railken\LaraOre\Work\WorkManager::class,
             \Railken\LaraOre\WorkLog\WorkLogManager::class,
         ])]);
@@ -40,6 +39,8 @@ class WorkServiceProvider extends ServiceProvider
         $this->app->register(\Railken\LaraOre\ApiServiceProvider::class);
         $this->app->register(\Railken\LaraOre\TemplateServiceProvider::class);
         $this->app->register(\Railken\LaraOre\FileServiceProvider::class);
+        $this->app->register(\Railken\LaraOre\EmailSenderServiceProvider::class);
+        $this->app->register(\Railken\LaraOre\FileGeneratorServiceProvider::class);
         $this->mergeConfigFrom(__DIR__.'/../config/ore.work.php', 'ore.work');
         $this->mergeConfigFrom(__DIR__.'/../config/ore.work-log.php', 'ore.work-log');
     }

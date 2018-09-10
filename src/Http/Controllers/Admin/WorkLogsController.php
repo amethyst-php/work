@@ -28,8 +28,8 @@ class WorkLogsController extends RestConfigurableController
     public $queryable = [
         'id',
         'work_name',
-        'worker',
-        'extra',
+        'payload',
+        'data',
         'created_at',
         'updated_at',
     ];
@@ -41,7 +41,7 @@ class WorkLogsController extends RestConfigurableController
      */
     public $fillable = [
         'work_name',
-        'worker',
-        'extra',
+        'payload',
+        'data',
     ];
 }

@@ -15,9 +15,7 @@ class CreateWorksTable extends Migration
         Schema::create(Config::get('ore.work.table'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('worker');
-            $table->text('extra')->nullable();
-            $table->text('mock_data')->nullable();
+            $table->text('payload');
             $table->timestamps();
         });
     }

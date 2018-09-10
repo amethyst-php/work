@@ -1,20 +1,19 @@
 <?php
 
-namespace Railken\LaraOre\WorkLog\Attributes\Worker;
+namespace Railken\LaraOre\Work\Attributes\Payload;
 
-use Illuminate\Support\Facades\Config;
 use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 use Railken\Laravel\Manager\Tokens;
 
-class WorkerAttribute extends BaseAttribute
+class PayloadAttribute extends BaseAttribute
 {
     /**
      * Name attribute.
      *
      * @var string
      */
-    protected $name = 'worker';
+    protected $name = 'payload';
 
     /**
      * Is the attribute required
@@ -22,7 +21,7 @@ class WorkerAttribute extends BaseAttribute
      *
      * @var bool
      */
-    protected $required = true;
+    protected $required = false;
 
     /**
      * Is the attribute unique.
@@ -37,18 +36,18 @@ class WorkerAttribute extends BaseAttribute
      * @var array
      */
     protected $exceptions = [
-        Tokens::NOT_DEFINED    => Exceptions\WorkLogWorkerNotDefinedException::class,
-        Tokens::NOT_VALID      => Exceptions\WorkLogWorkerNotValidException::class,
-        Tokens::NOT_AUTHORIZED => Exceptions\WorkLogWorkerNotAuthorizedException::class,
-        Tokens::NOT_UNIQUE     => Exceptions\WorkLogWorkerNotUniqueException::class,
+        Tokens::NOT_DEFINED    => Exceptions\WorkPayloadNotDefinedException::class,
+        Tokens::NOT_VALID      => Exceptions\WorkPayloadNotValidException::class,
+        Tokens::NOT_AUTHORIZED => Exceptions\WorkPayloadNotAuthorizedException::class,
+        Tokens::NOT_UNIQUE     => Exceptions\WorkPayloadNotUniqueException::class,
     ];
 
     /**
      * List of all permissions.
      */
     protected $permissions = [
-        Tokens::PERMISSION_FILL => 'worklog.attributes.worker.fill',
-        Tokens::PERMISSION_SHOW => 'worklog.attributes.worker.show',
+        Tokens::PERMISSION_FILL => 'work.attributes.payload.fill',
+        Tokens::PERMISSION_SHOW => 'work.attributes.payload.show',
     ];
 
     /**
@@ -61,6 +60,6 @@ class WorkerAttribute extends BaseAttribute
      */
     public function valid(EntityContract $entity, $value)
     {
-        return in_array($value, Config::get('ore.work.workers'));
+        return true;
     }
 }

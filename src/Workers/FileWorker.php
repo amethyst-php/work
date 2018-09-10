@@ -2,47 +2,23 @@
 
 namespace Railken\LaraOre\Workers;
 
-use Illuminate\Support\Collection;
-use Railken\Bag;
-use Railken\LaraOre\File\FileManager;
-use Railken\LaraOre\Template\TemplateManager;
+use Railken\LaraOre\FileGenerator\FileGeneratorManager;
 use Railken\LaraOre\Work\Work;
+use stdClass;
 
 class FileWorker extends BaseWorker
 {
     /**
-     * @return array
+     * @var \Railken\LaraOre\FileGenerator\FileGeneratorManager
      */
-    public function getData()
-    {
-        return ['filename', 'filetype', 'content', 'tags'];
-    }
+    protected $manager;
 
     /**
-     * Get options by work.
-     *
-     * @param Work  $work
-     * @param array $data
-     *
-     * @return Bag
+     * Create a new instance.
      */
-    public function getOptionsByWork(Work $work, array $data = [])
+    public function __construct()
     {
-        $bag = new Bag();
-
-        $extra = new Bag($work->extra);
-
-        $tm = new TemplateManager();
-
-        $bag->set('filename', $tm->renderRaw('text/plain', $extra->get('filename'), $data));
-        $bag->set('disk', $extra->get('disk'));
-
-        $bag->set('content', $tm->renderRaw($extra->get('filetype'), $extra->get('content'), $data));
-        $bag->set('entity', null);
-
-        $bag->set('tags', explode(',', $extra->get('tags')));
-
-        return $bag;
+        $this->manager = new FileGeneratorManager();
     }
 
     /**
@@ -51,22 +27,10 @@ class FileWorker extends BaseWorker
      * @param Work  $work
      * @param array $data
      */
-    public function execute(Work $work, array $data = [], array $entities = [])
+    public function execute(Work $work, stdClass $payload, array $data = [])
     {
-        $options = $this->getOptionsByWork($work, $data);
-        $fm = new FileManager();
+        $generator = $this->manager->getRepository()->findOneById($payload->data->id);
 
-        $result = $fm->uploadFileByContent($options->get('content'), $options->get('filename'));
-
-        $fm->update($result->getResource(), new Bag(['tags' => $options->get('tags')]));
-
-        Collection::make($entities)->map(function ($entity) use ($fm, $result) {
-            $fm->assignToModel($result->getResource(), $entity, []);
-        });
-
-        $this->log($work, [
-            'filename'      => $options->get('filename'),
-            'tags'          => $options->get('tags'),
-        ]);
+        $result = $this->manager->generate($generator, $data);
     }
 }

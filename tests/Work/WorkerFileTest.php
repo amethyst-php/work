@@ -2,6 +2,8 @@
 
 namespace Railken\LaraOre\Tests\Work;
 
+use Railken\LaraOre\FileGenerator\FileGeneratorFaker;
+use Railken\LaraOre\FileGenerator\FileGeneratorManager;
 use Railken\LaraOre\Work\WorkFaker;
 use Railken\LaraOre\Work\WorkManager;
 
@@ -17,9 +19,12 @@ class WorkerFileTest extends BaseTest
         return new WorkManager();
     }
 
-    public function testWorkerFile1()
+    public function testWorkerFile()
     {
-        $result = $this->getManager()->create(WorkFaker::make()->parametersWithFile());
+        $fgm = new FileGeneratorManager();
+        $fg = $fgm->create(FileGeneratorFaker::make()->parameters()->set('body', '{{ message }}'))->getResource();
+
+        $result = $this->getManager()->create(WorkFaker::make()->parametersWithFile()->set('payload.data.id', $fg->id));
 
         $this->assertEquals(true, $result->ok());
 
@@ -28,19 +33,5 @@ class WorkerFileTest extends BaseTest
         $this->getManager()->dispatch($work, [
             'message' => 'Hello',
         ]);
-    }
-
-    public function testWorkerFile2()
-    {
-        $result = $this->getManager()->create(WorkFaker::make()->parametersWithFile());
-        $result = $this->getManager()->create(WorkFaker::make()->parametersWithFile());
-
-        $this->assertEquals(true, $result->ok());
-
-        $work = $result->getResource();
-
-        $this->getManager()->dispatch($work, [
-            'message' => 'Hello',
-        ], [$work]);
     }
 }

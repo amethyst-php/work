@@ -1,29 +1,29 @@
 <?php
 
-namespace Railken\LaraOre\WorkLog\Attributes\Extra\Exceptions;
+namespace Railken\LaraOre\WorkLog\Attributes\Data\Exceptions;
 
 use Railken\LaraOre\WorkLog\Exceptions\WorkLogAttributeException;
 
-class WorkLogExtraNotUniqueException extends WorkLogAttributeException
+class WorkLogDataNotAuthorizedException extends WorkLogAttributeException
 {
     /**
      * The reason (attribute) for which this exception is thrown.
      *
      * @var string
      */
-    protected $attribute = 'extra';
+    protected $attribute = 'data';
 
     /**
      * The code to identify the error.
      *
      * @var string
      */
-    protected $code = 'WORKLOG_EXTRA_NOT_UNIQUE';
+    protected $code = 'WORKLOG_DATA_NOT_AUTHTORIZED';
 
     /**
      * The message.
      *
      * @var string
      */
-    protected $message = 'The %s is not unique';
+    protected $message = "You're not authorized to interact with %s, missing %s permission";
 }

@@ -27,9 +27,7 @@ class WorkManager extends ModelManager
         Attributes\Name\NameAttribute::class,
         Attributes\CreatedAt\CreatedAtAttribute::class,
         Attributes\UpdatedAt\UpdatedAtAttribute::class,
-        Attributes\Worker\WorkerAttribute::class,
-        Attributes\Extra\ExtraAttribute::class,
-        Attributes\MockData\MockDataAttribute::class,
+        Attributes\Payload\PayloadAttribute::class,
     ];
 
     /**
@@ -73,8 +71,8 @@ class WorkManager extends ModelManager
      * @param array $data
      * @param array $entities
      */
-    public function dispatch(Work $work, array $data = [], array $entities = [])
+    public function dispatch(Work $work, array $data = [])
     {
-        dispatch(new ProcessWork($work, $data, $entities));
+        dispatch(new ProcessWork($work, $data));
     }
 }

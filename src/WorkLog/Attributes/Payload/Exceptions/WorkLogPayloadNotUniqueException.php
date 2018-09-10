@@ -1,29 +1,29 @@
 <?php
 
-namespace Railken\LaraOre\WorkLog\Attributes\Extra\Exceptions;
+namespace Railken\LaraOre\WorkLog\Attributes\Payload\Exceptions;
 
 use Railken\LaraOre\WorkLog\Exceptions\WorkLogAttributeException;
 
-class WorkLogExtraNotValidException extends WorkLogAttributeException
+class WorkLogPayloadNotUniqueException extends WorkLogAttributeException
 {
     /**
      * The reason (attribute) for which this exception is thrown.
      *
      * @var string
      */
-    protected $attribute = 'extra';
+    protected $attribute = 'payload';
 
     /**
      * The code to identify the error.
      *
      * @var string
      */
-    protected $code = 'WORKLOG_EXTRA_NOT_VALID';
+    protected $code = 'WORKLOG_PAYLOAD_NOT_UNIQUE';
 
     /**
      * The message.
      *
      * @var string
      */
-    protected $message = 'The %s is not valid';
+    protected $message = 'The %s is not unique';
 }

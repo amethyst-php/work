@@ -1,24 +1,24 @@
 <?php
 
-namespace Railken\LaraOre\WorkLog\Attributes\Worker\Exceptions;
+namespace Railken\LaraOre\WorkLog\Attributes\Data\Exceptions;
 
 use Railken\LaraOre\WorkLog\Exceptions\WorkLogAttributeException;
 
-class WorkLogWorkerNotUniqueException extends WorkLogAttributeException
+class WorkLogDataNotUniqueException extends WorkLogAttributeException
 {
     /**
      * The reason (attribute) for which this exception is thrown.
      *
      * @var string
      */
-    protected $attribute = 'worker';
+    protected $attribute = 'data';
 
     /**
      * The code to identify the error.
      *
      * @var string
      */
-    protected $code = 'WORKLOG_WORKER_NOT_UNIQUE';
+    protected $code = 'WORKLOG_DATA_NOT_UNIQUE';
 
     /**
      * The message.

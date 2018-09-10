@@ -1,20 +1,19 @@
 <?php
 
-namespace Railken\LaraOre\Work\Attributes\Worker;
+namespace Railken\LaraOre\WorkLog\Attributes\Data;
 
-use Illuminate\Support\Facades\Config;
 use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 use Railken\Laravel\Manager\Tokens;
 
-class WorkerAttribute extends BaseAttribute
+class DataAttribute extends BaseAttribute
 {
     /**
      * Name attribute.
      *
      * @var string
      */
-    protected $name = 'worker';
+    protected $name = 'data';
 
     /**
      * Is the attribute required
@@ -37,30 +36,30 @@ class WorkerAttribute extends BaseAttribute
      * @var array
      */
     protected $exceptions = [
-        Tokens::NOT_DEFINED    => Exceptions\WorkWorkerNotDefinedException::class,
-        Tokens::NOT_VALID      => Exceptions\WorkWorkerNotValidException::class,
-        Tokens::NOT_AUTHORIZED => Exceptions\WorkWorkerNotAuthorizedException::class,
-        Tokens::NOT_UNIQUE     => Exceptions\WorkWorkerNotUniqueException::class,
+        Tokens::NOT_DEFINED    => Exceptions\WorkLogDataNotDefinedException::class,
+        Tokens::NOT_VALID      => Exceptions\WorkLogDataNotValidException::class,
+        Tokens::NOT_AUTHORIZED => Exceptions\WorkLogDataNotAuthorizedException::class,
+        Tokens::NOT_UNIQUE     => Exceptions\WorkLogDataNotUniqueException::class,
     ];
 
     /**
      * List of all permissions.
      */
     protected $permissions = [
-        Tokens::PERMISSION_FILL => 'work.attributes.worker.fill',
-        Tokens::PERMISSION_SHOW => 'work.attributes.worker.show',
+        Tokens::PERMISSION_FILL => 'worklog.attributes.data.fill',
+        Tokens::PERMISSION_SHOW => 'worklog.attributes.data.show',
     ];
 
     /**
      * Is a value valid ?
      *
-     * @param EntityContract $entity
-     * @param mixed          $value
+     * @param \Railken\Laravel\Manager\Contracts\EntityContract $entity
+     * @param mixed                                             $value
      *
      * @return bool
      */
     public function valid(EntityContract $entity, $value)
     {
-        return in_array($value, Config::get('ore.work.workers'));
+        return true;
     }
 }

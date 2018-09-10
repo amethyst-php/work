@@ -15,7 +15,6 @@ class ProcessWork implements ShouldQueue
 
     protected $work;
     protected $data;
-    protected $entities;
 
     /**
      * Create a new job instance.
@@ -24,11 +23,10 @@ class ProcessWork implements ShouldQueue
      * @param array $data
      * @param array $entities
      */
-    public function __construct(Work $work, array $data = [], array $entities = [])
+    public function __construct(Work $work, array $data = [])
     {
         $this->work = $work;
         $this->data = $data;
-        $this->entities = $entities;
     }
 
     /**
@@ -37,8 +35,9 @@ class ProcessWork implements ShouldQueue
     public function handle()
     {
         $work = $this->work;
-        $worker = new $work->worker();
-        $worker->execute($work, $this->data, $this->entities);
-        // $worker->log();
+        $payload = $work->payload;
+
+        $worker = new $payload->class();
+        $worker->execute($work, $payload, $this->data);
     }
 }

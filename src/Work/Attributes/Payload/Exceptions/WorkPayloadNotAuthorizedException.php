@@ -1,24 +1,24 @@
 <?php
 
-namespace Railken\LaraOre\WorkLog\Attributes\Extra\Exceptions;
+namespace Railken\LaraOre\Work\Attributes\Payload\Exceptions;
 
-use Railken\LaraOre\WorkLog\Exceptions\WorkLogAttributeException;
+use Railken\LaraOre\Work\Exceptions\WorkAttributeException;
 
-class WorkLogExtraNotAuthorizedException extends WorkLogAttributeException
+class WorkPayloadNotAuthorizedException extends WorkAttributeException
 {
     /**
      * The reason (attribute) for which this exception is thrown.
      *
      * @var string
      */
-    protected $attribute = 'extra';
+    protected $attribute = 'payload';
 
     /**
      * The code to identify the error.
      *
      * @var string
      */
-    protected $code = 'WORKLOG_EXTRA_NOT_AUTHTORIZED';
+    protected $code = 'WORK_PAYLOAD_NOT_AUTHTORIZED';
 
     /**
      * The message.

@@ -1,15 +1,15 @@
 <?php
 
-namespace Railken\LaraOre\Workers;
+namespace Railken\Amethyst\Workers;
 
-use Railken\LaraOre\EmailSender\EmailSenderManager;
-use Railken\LaraOre\Work\Work;
+use Railken\Amethyst\Managers\EmailSenderManager;
+use Railken\Amethyst\Models\Work;
 use stdClass;
 
 class EmailWorker extends BaseWorker
 {
     /**
-     * @var \Railken\LaraOre\EmailSender\EmailSenderManager
+     * @var \Railken\Amethyst\Managers\EmailSenderManager
      */
     protected $manager;
 

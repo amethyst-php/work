@@ -1,15 +1,15 @@
 <?php
 
-namespace Railken\LaraOre\Workers;
+namespace Railken\Amethyst\Workers;
 
-use Railken\LaraOre\FileGenerator\FileGeneratorManager;
-use Railken\LaraOre\Work\Work;
+use Railken\Amethyst\Managers\FileGeneratorManager;
+use Railken\Amethyst\Models\Work;
 use stdClass;
 
 class FileWorker extends BaseWorker
 {
     /**
-     * @var \Railken\LaraOre\FileGenerator\FileGeneratorManager
+     * @var \Railken\Amethyst\Managers\FileGeneratorManager
      */
     protected $manager;
 

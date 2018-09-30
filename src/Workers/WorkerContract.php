@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\LaraOre\Workers;
+namespace Railken\Amethyst\Workers;
 
 interface WorkerContract
 {

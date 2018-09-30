@@ -12,11 +12,13 @@ class CreateWorksTable extends Migration
      */
     public function up()
     {
-        Schema::create(Config::get('ore.work.table'), function (Blueprint $table) {
+        Schema::create(Config::get('amethyst.work.managers.work.table'), function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->text('payload');
+            $table->text('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,6 +27,6 @@ class CreateWorksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(Config::get('ore.work.table'));
+        Schema::dropIfExists(Config::get('amethyst.work.managers.work.table'));
     }
 }

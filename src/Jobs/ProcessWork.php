@@ -1,13 +1,13 @@
 <?php
 
-namespace Railken\LaraOre\Jobs;
+namespace Railken\Amethyst\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Railken\LaraOre\Work\Work;
+use Railken\Amethyst\Models\Work;
 
 class ProcessWork implements ShouldQueue
 {
@@ -21,7 +21,6 @@ class ProcessWork implements ShouldQueue
      *
      * @param Work  $work
      * @param array $data
-     * @param array $entities
      */
     public function __construct(Work $work, array $data = [])
     {

@@ -12,7 +12,7 @@ class CreateWorksTable extends Migration
      */
     public function up()
     {
-        Schema::create(Config::get('amethyst.work.managers.work.table'), function (Blueprint $table) {
+        Schema::create(Config::get('amethyst.work.data.work.table'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('payload');
@@ -27,6 +27,6 @@ class CreateWorksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(Config::get('amethyst.work.managers.work.table'));
+        Schema::dropIfExists(Config::get('amethyst.work.data.work.table'));
     }
 }

@@ -2,27 +2,19 @@
 
 namespace Railken\Amethyst\Managers;
 
-use Illuminate\Support\Facades\Config;
+use Railken\Amethyst\Common\ConfigurableManager;
 use Railken\Amethyst\Jobs\ProcessWork;
 use Railken\Amethyst\Models\Work;
 use Railken\Lem\Manager;
 
 class WorkManager extends Manager
 {
-    /**
-     * Describe this manager.
-     *
-     * @var string
-     */
-    public $comment = '...';
+    use ConfigurableManager;
 
     /**
-     * Register Classes.
+     * @var string
      */
-    public function registerClasses()
-    {
-        return Config::get('amethyst.work.managers.work');
-    }
+    protected $config = 'amethyst.work.data.work';
 
     /**
      * Dispatch a work.

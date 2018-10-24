@@ -15,5 +15,6 @@ class WorkServiceProvider extends CommonServiceProvider
 
         $this->app->register(\Railken\Amethyst\Providers\EmailSenderServiceProvider::class);
         $this->app->register(\Railken\Amethyst\Providers\FileGeneratorServiceProvider::class);
+        $this->app->register(\Railken\Amethyst\Providers\DataBuilderServiceProvider::class);
     }
 }

@@ -21,4 +21,12 @@ class Work extends Model implements EntityContract
         $this->ini('amethyst.work.data.work');
         parent::__construct($attributes);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function data_builder()
+    {
+        return $this->belongsTo(DataBuilder::class);
+    }
 }

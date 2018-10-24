@@ -29,8 +29,8 @@ class EmailWorker extends BaseWorker
      */
     public function execute(Work $work, stdClass $payload, array $data = [])
     {
-        $generator = $this->manager->getRepository()->findOneById($payload->data->id);
+        $emailSender = $this->manager->getRepository()->findOneById($payload->data->id);
 
-        $result = $this->manager->send($generator, $data);
+        $result = $this->manager->send($emailSender, $data);
     }
 }

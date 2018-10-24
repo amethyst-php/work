@@ -21,6 +21,9 @@ class WorkFaker extends Faker
         $bag->set('payload', ['dummy' => 'dummy']);
         $bag->set('description', $faker->text);
         $bag->set('data_builder', DataBuilderFaker::make()->parameters()->set('data_builder.class_name', DummyDataBuilder::class)->toArray());
+        $bag->set('data', [
+            'id' => '{{ record.id }}',
+        ]);
 
         return $bag;
     }

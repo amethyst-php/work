@@ -23,7 +23,11 @@ class WorkerFileTest extends BaseTest
     public function testWorkerFile()
     {
         $fgm = new FileGeneratorManager();
-        $fg = $fgm->create(FileGeneratorFaker::make()->parameters()->set('body', '{{ message }}'))->getResource();
+
+        $fg = $fgm->create(FileGeneratorFaker::make()
+            ->parameters()
+            ->set('body', '{{ message }}')
+        )->getResource();
 
         $result = $this->getManager()->create(WorkFaker::make()->parametersWithFile()->set('payload.data.id', $fg->id));
 

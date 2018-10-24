@@ -25,6 +25,7 @@ class WorkSchema extends Schema
                 ->setRelationName('data_builder')
                 ->setRelationManager(DataBuilderManager::class),
             Attributes\ObjectAttribute::make('payload'),
+            Attributes\ObjectAttribute::make('data'),
             Attributes\CreatedAtAttribute::make(),
             Attributes\UpdatedAtAttribute::make(),
             Attributes\DeletedAtAttribute::make(),

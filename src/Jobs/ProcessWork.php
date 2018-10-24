@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Railken\Amethyst\Models\Work;
+use Railken\Template\Generators;
 
 class ProcessWork implements ShouldQueue
 {
@@ -37,9 +38,11 @@ class ProcessWork implements ShouldQueue
         $data = $this->data;
 
         $query = $work->data_builder->newInstanceQuery((array) $this->data);
+        $generator = new Generators\TextGenerator();
 
-        $work->data_builder->extract($query->get(), function ($resource, array $data) use ($work) {
+        $work->data_builder->extract($query->get(), function ($resource, array $data) use ($work, $generator) {
             $data = array_merge($this->data, $data);
+            $data = array_merge($data, (array) json_decode($generator->generateAndRender((string) json_encode($work->data), $data)));
 
             $payload = $work->payload;
 

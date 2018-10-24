@@ -34,9 +34,17 @@ class ProcessWork implements ShouldQueue
     public function handle()
     {
         $work = $this->work;
-        $payload = $work->payload;
+        $data = $this->data;
 
-        $worker = new $payload->class();
-        $worker->execute($work, $payload, $this->data);
+        $query = $work->data_builder->newInstanceQuery((array) $this->data);
+
+        $work->data_builder->extract($query->get(), function ($resource, array $data) use ($work) {
+            $data = array_merge($this->data, $data);
+
+            $payload = $work->payload;
+
+            $worker = new $payload->class();
+            $worker->execute($work, $payload, $data);
+        });
     }
 }

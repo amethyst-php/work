@@ -37,10 +37,9 @@ class ProcessWork implements ShouldQueue
         $work = $this->work;
         $data = $this->data;
 
-        $query = $work->data_builder->newInstanceQuery((array) $this->data);
         $generator = new Generators\TextGenerator();
 
-        $work->data_builder->extract($query->get(), function ($resource, array $data) use ($work, $generator) {
+        $callback = function ($resource, array $data) use ($work, $generator) {
             $data = array_merge($this->data, $data);
             $data = array_merge($data, (array) json_decode($generator->generateAndRender((string) json_encode($work->data), $data)));
 
@@ -48,6 +47,14 @@ class ProcessWork implements ShouldQueue
 
             $worker = new $payload->class();
             $worker->execute($work, $payload, $data);
-        });
+        };
+
+        if ($work->data_builder) {
+            $query = $work->data_builder->newInstanceQuery((array) $this->data);
+
+            $work->data_builder->extract($query->get(), $callback);
+        } else {
+            $callback($data);
+        }
     }
 }

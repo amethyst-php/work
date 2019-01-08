@@ -42,7 +42,7 @@ class ProcessWork implements ShouldQueue
 
         $callback = function ($resource, array $data) use ($work, $generator) {
             $data = array_merge($this->data, $data);
-            $data = array_merge($data, Yaml::parse($generator->generateAndRender($work->data, $data)));
+            $data = array_merge($data, (array) Yaml::parse($generator->generateAndRender($work->data, $data)));
 
             $payload = json_decode(json_encode(Yaml::parse($work->payload)));
 

@@ -3,6 +3,7 @@
 namespace Railken\Amethyst\Tests;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Config;
 
 abstract class BaseTest extends \Orchestra\Testbench\TestCase
 {
@@ -22,12 +23,15 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
             '--provider' => 'Spatie\MediaLibrary\MediaLibraryServiceProvider',
         ]);
         $this->artisan('migrate:fresh');
+        $this->artisan('amethyst:user:install');
+        Config::set('amethyst.notification.data.notification.user', \Railken\Amethyst\Models\User::class);
     }
 
     protected function getPackageProviders($app)
     {
         return [
             \Railken\Amethyst\Providers\WorkServiceProvider::class,
+            \Railken\Amethyst\Providers\UserServiceProvider::class,
         ];
     }
 }

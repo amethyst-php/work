@@ -29,5 +29,5 @@ class WorkTest extends BaseTest
      *
      * @var string
      */
-    protected $config = 'amethyst.work.http.admin.work';
+    protected $route = 'admin.work';
 }

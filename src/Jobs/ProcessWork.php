@@ -9,6 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Railken\Amethyst\Models\Work;
 use Railken\Template\Generators;
+use Symfony\Component\Yaml\Yaml;
 
 class ProcessWork implements ShouldQueue
 {
@@ -41,9 +42,9 @@ class ProcessWork implements ShouldQueue
 
         $callback = function ($resource, array $data) use ($work, $generator) {
             $data = array_merge($this->data, $data);
-            $data = array_merge($data, (array) json_decode($generator->generateAndRender((string) json_encode($work->data), $data)));
+            $data = array_merge($data, Yaml::parse($generator->generateAndRender($work->data, $data)));
 
-            $payload = $work->payload;
+            $payload = json_decode(json_encode(Yaml::parse($work->payload)));
 
             $worker = new $payload->class();
             $worker->execute($work, $payload, $data);

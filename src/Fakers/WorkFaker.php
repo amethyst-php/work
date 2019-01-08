@@ -6,6 +6,7 @@ use Faker\Factory;
 use Railken\Amethyst\DataBuilders\DummyDataBuilder;
 use Railken\Bag;
 use Railken\Lem\Faker;
+use Symfony\Component\Yaml\Yaml;
 
 class WorkFaker extends Faker
 {
@@ -18,12 +19,12 @@ class WorkFaker extends Faker
 
         $bag = new Bag();
         $bag->set('name', $faker->name);
-        $bag->set('payload', ['dummy' => 'dummy']);
+        $bag->set('payload', Yaml::dump(['dummy' => 'dummy']));
         $bag->set('description', $faker->text);
         $bag->set('data_builder', DataBuilderFaker::make()->parameters()->set('data_builder.class_name', DummyDataBuilder::class)->toArray());
-        $bag->set('data', [
+        $bag->set('data', Yaml::dump([
             'id' => '{{ record.id }}',
-        ]);
+        ]));
 
         return $bag;
     }
@@ -36,12 +37,12 @@ class WorkFaker extends Faker
         $faker = Factory::create();
 
         $bag = $this->parameters();
-        $bag->set('payload', [
+        $bag->set('payload', Yaml::dump([
             'class' => 'Railken\Amethyst\Workers\FileWorker',
             'data'  => [
                 'id' => 1,
             ],
-        ]);
+        ]));
 
         return $bag;
     }
@@ -54,12 +55,12 @@ class WorkFaker extends Faker
         $faker = Factory::create();
 
         $bag = $this->parameters();
-        $bag->set('payload', [
+        $bag->set('payload', Yaml::dump([
             'class' => 'Railken\Amethyst\Workers\EmailWorker',
             'data'  => [
                 'id' => 1,
             ],
-        ]);
+        ]));
 
         return $bag;
     }

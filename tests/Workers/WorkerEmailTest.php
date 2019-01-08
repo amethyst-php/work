@@ -8,6 +8,7 @@ use Railken\Amethyst\Managers\EmailSenderManager;
 use Railken\Amethyst\Managers\FileManager;
 use Railken\Amethyst\Managers\WorkManager;
 use Railken\Amethyst\Tests\BaseTest;
+use Symfony\Component\Yaml\Yaml;
 
 class WorkerEmailTest extends BaseTest
 {
@@ -26,11 +27,16 @@ class WorkerEmailTest extends BaseTest
         $esm = new EmailSenderManager();
         $es = $esm->create(EmailSenderFaker::make()->parameters()->set('body', '{{ user.name }}'))->getResource();
 
-        $work = $this->getManager()->create(WorkFaker::make()->parametersWithEmail()->set('payload.data.id', $es->id))->getResource();
+        $work = $this->getManager()->create(WorkFaker::make()->parameters()->set('payload', Yaml::dump([
+            'class' => 'Railken\Amethyst\Workers\EmailWorker',
+            'data'  => [
+                'id' => $es->id,
+            ],
+        ])))->getResource();
 
         $fm = new FileManager();
-        $result = $fm->uploadFileByContent('hello my friend', 'welcome.txt');
-        $file = $result->getResource();
+        $file = $fm->create([])->getResource();
+        $result = $fm->uploadFileByContent($file, 'hello my friend');
 
         $this->getManager()->dispatch($work, [
             'user' => [
@@ -38,7 +44,7 @@ class WorkerEmailTest extends BaseTest
                 'name'  => 'hello',
             ],
             'message' => 'text',
-            'file'    => $file,
+            'file'    => $file->media[0]->getPath(),
         ]);
 
         $this->assertEquals(1, 1);

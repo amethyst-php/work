@@ -7,6 +7,7 @@ use Railken\Amethyst\Fakers\WorkFaker;
 use Railken\Amethyst\Managers\FileGeneratorManager;
 use Railken\Amethyst\Managers\WorkManager;
 use Railken\Amethyst\Tests\BaseTest;
+use Symfony\Component\Yaml\Yaml;
 
 class WorkerFileTest extends BaseTest
 {
@@ -29,9 +30,12 @@ class WorkerFileTest extends BaseTest
             ->set('body', '{{ message }}')
         )->getResource();
 
-        $result = $this->getManager()->create(WorkFaker::make()->parametersWithFile()->set('payload.data.id', $fg->id));
-
-        $this->assertEquals(true, $result->ok());
+        $result = $this->getManager()->create(WorkFaker::make()->parameters()->set('payload', Yaml::dump([
+            'class' => 'Railken\Amethyst\Workers\FileWorker',
+            'data'  => [
+                'id' => $fg->id,
+            ],
+        ])));
 
         $work = $result->getResource();
 

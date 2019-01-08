@@ -5,6 +5,7 @@ namespace Railken\Amethyst\Schemas;
 use Railken\Amethyst\Managers\DataBuilderManager;
 use Railken\Lem\Attributes;
 use Railken\Lem\Schema;
+use Railken\Lem\Contracts\EntityContract;
 
 class WorkSchema extends Schema
 {
@@ -24,8 +25,12 @@ class WorkSchema extends Schema
             Attributes\BelongsToAttribute::make('data_builder_id')
                 ->setRelationName('data_builder')
                 ->setRelationManager(DataBuilderManager::class),
-            Attributes\YamlAttribute::make('payload'),
-            Attributes\YamlAttribute::make('data'),
+            Attributes\YamlAttribute::make('payload')->setDefault(function (EntityContract $entity) {
+                return file_get_contents(__DIR__.'/../../resources/schema/default/payload.yaml');
+            }),
+            Attributes\YamlAttribute::make('data')->setDefault(function (EntityContract $entity) {
+                return file_get_contents(__DIR__.'/../../resources/schema/default/data.yaml');
+            }),
             Attributes\CreatedAtAttribute::make(),
             Attributes\UpdatedAtAttribute::make(),
             Attributes\DeletedAtAttribute::make(),

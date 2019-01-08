@@ -1,0 +1,21 @@
+# The payload is the main configuration of the entity Work
+#
+# Here you can define what job should handle the worker
+#
+# Example 1. Generate a File using the FileGenerator with id 1
+#
+# class: Railken\Amethyst\Workers\FileWorker
+# data:
+#   id: 1
+#
+# Example 2. Send an email using EmailSender with id 1
+#
+# class: Railken\Amethyst\Workers\EmailWorker
+# data:
+#   id: 1
+#
+# Example 3. Perform a task with FtpActions with id 1
+#
+# class: Railken\Amethyst\Workers\FtpAction
+# data:
+#   id: 1

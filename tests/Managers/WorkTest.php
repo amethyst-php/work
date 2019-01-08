@@ -24,4 +24,11 @@ class WorkTest extends BaseTest
      * @var string
      */
     protected $faker = WorkFaker::class;
+
+    public function testDefaultSchema()
+    {
+        $resource = $this->getManager()->create($this->faker::make()->parameters()->remove('payload'))->getResource();
+
+        $this->assertEquals(file_get_contents(__DIR__.'/../../resources/schema/default/payload.yaml'), $resource->payload);
+    }
 }

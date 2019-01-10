@@ -55,7 +55,7 @@ class ProcessWork implements ShouldQueue
 
             $work->data_builder->extract($query->get(), $callback);
         } else {
-            $callback($data);
+            $callback(null, []);
         }
     }
 }

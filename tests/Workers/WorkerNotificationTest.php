@@ -5,7 +5,6 @@ namespace Railken\Amethyst\Tests\Workers;
 use Railken\Amethyst\Fakers\NotificationSenderFaker;
 use Railken\Amethyst\Fakers\WorkFaker;
 use Railken\Amethyst\Managers\NotificationSenderManager;
-use Railken\Amethyst\Managers\FileManager;
 use Railken\Amethyst\Managers\WorkManager;
 use Railken\Amethyst\Tests\BaseTest;
 use Symfony\Component\Yaml\Yaml;
@@ -38,7 +37,7 @@ class WorkerNotificationTest extends BaseTest
             'user' => [
                 'email' => 'test@test.net',
                 'name'  => 'hello',
-            ]
+            ],
         ]);
 
         $this->assertEquals(true, $result->ok());

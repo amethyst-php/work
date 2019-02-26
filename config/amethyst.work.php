@@ -35,11 +35,11 @@ return [
     'http' => [
         'admin' => [
             'work' => [
-                'enabled'     => true,
-                'controller'  => Railken\Amethyst\Http\Controllers\Admin\WorksController::class,
-                'router'      => [
-                    'as'        => 'work.',
-                    'prefix'    => '/works',
+                'enabled'    => true,
+                'controller' => Railken\Amethyst\Http\Controllers\Admin\WorksController::class,
+                'router'     => [
+                    'as'     => 'work.',
+                    'prefix' => '/works',
                 ],
             ],
         ],

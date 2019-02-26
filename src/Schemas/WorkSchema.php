@@ -4,8 +4,8 @@ namespace Railken\Amethyst\Schemas;
 
 use Railken\Amethyst\Managers\DataBuilderManager;
 use Railken\Lem\Attributes;
-use Railken\Lem\Schema;
 use Railken\Lem\Contracts\EntityContract;
+use Railken\Lem\Schema;
 
 class WorkSchema extends Schema
 {

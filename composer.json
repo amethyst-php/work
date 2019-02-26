@@ -9,6 +9,7 @@
         "railken/amethyst-email-sender": "0.1.*",
         "railken/amethyst-data-builder": "0.1.*",
         "railken/amethyst-notification-sender": "0.1.*",
+        "railken/amethyst-http-requester": "0.1.*",
         "railken/amethyst-ftp": "0.1.*"
     },
     "require-dev": {

@@ -16,6 +16,12 @@
 #
 # Example 3. Perform a task with FtpActions with id 1
 #
-# class: Railken\Amethyst\Workers\FtpAction
+# class: Railken\Amethyst\Workers\FtpWorker
+# data:
+#   id: 1
+#
+# Example 4. Perform a task with HttpRequester with id 1
+#
+# class: Railken\Amethyst\Workers\HttpWorker
 # data:
 #   id: 1

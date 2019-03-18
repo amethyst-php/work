@@ -44,7 +44,7 @@ class ProcessWork implements ShouldQueue
             $data = array_merge($this->data, $data);
             $data = array_merge($data, (array) Yaml::parse($generator->generateAndRender($work->data, $data)));
 
-            $payload = json_decode(json_encode(Yaml::parse($work->payload)));
+            $payload = json_decode(json_encode(Yaml::parse($generator->generateAndRender($work->payload, $data))));
 
             $worker = new $payload->class();
             $worker->execute($work, $payload, $data);

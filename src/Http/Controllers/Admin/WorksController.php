@@ -2,10 +2,10 @@
 
 namespace Railken\Amethyst\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use Railken\Amethyst\Api\Http\Controllers\RestManagerController;
 use Railken\Amethyst\Api\Http\Controllers\Traits as RestTraits;
 use Railken\Amethyst\Managers\WorkManager;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class WorksController extends RestManagerController

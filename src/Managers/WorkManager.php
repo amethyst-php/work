@@ -35,7 +35,7 @@ class WorkManager extends Manager
 
         return $result;
     }
-    
+
     /**
      * Describe extra actions.
      *

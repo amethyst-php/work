@@ -31,6 +31,6 @@ class FileWorker extends BaseWorker
     {
         $generator = $this->manager->getRepository()->findOneById($payload->data->id);
 
-        $result = $this->manager->generate($generator, $data);
+        $result = $this->manager->execute($generator, $data);
     }
 }

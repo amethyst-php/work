@@ -31,6 +31,6 @@ class EmailWorker extends BaseWorker
     {
         $emailSender = $this->manager->getRepository()->findOneById($payload->data->id);
 
-        $result = $this->manager->send($emailSender, $data);
+        $result = $this->manager->execute($emailSender, $data);
     }
 }

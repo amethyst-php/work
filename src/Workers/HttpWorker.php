@@ -31,6 +31,6 @@ class HttpWorker extends BaseWorker
     {
         $httpRequester = $this->manager->getRepository()->findOneById($payload->data->id);
 
-        $result = $this->manager->send($httpRequester, $data);
+        $result = $this->manager->execute($httpRequester, $data);
     }
 }

@@ -31,6 +31,6 @@ class HttpWorker extends BaseWorker
     {
         $Importer = $this->manager->getRepository()->findOneById($payload->data->id);
 
-        $result = $this->manager->send($Importer, $data);
+        $result = $this->manager->execute($Importer, $data);
     }
 }

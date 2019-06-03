@@ -29,8 +29,8 @@ class NotificationWorker extends BaseWorker
      */
     public function execute(Work $work, stdClass $payload, array $data = [])
     {
-        $emailSender = $this->manager->getRepository()->findOneById($payload->data->id);
+        $notification = $this->manager->getRepository()->findOneById($payload->data->id);
 
-        $result = $this->manager->execute($emailSender, $data);
+        $result = $this->manager->execute($notification, $data);
     }
 }

@@ -18,6 +18,14 @@ class WorkManager extends Manager
     protected $config = 'amethyst.work.data.work';
 
     /**
+     * @alias execute
+     */
+    public function dispatch(Work $work, array $data = [])
+    {
+        return $this->execute($work, $data);
+    }
+
+    /**
      * Dispatch a work.
      *
      * @param Work  $work

@@ -1,37 +1,37 @@
 {
-    "name": "railken/amethyst-work",
+    "name": "amethyst/work",
     "keywords": ["laravel", "amethyst", "amethyst-work", "work"],
     "license": "MIT",
     "require": {
         "php": ">=7.1",
-        "railken/amethyst-common": "0.1.*",
-        "railken/amethyst-file-generator": "0.1.*",
-        "railken/amethyst-email-sender": "0.1.*",
-        "railken/amethyst-data-builder": "0.1.*",
-        "railken/amethyst-notification-sender": "0.1.*",
-        "railken/amethyst-http-requester": "0.1.*",
-        "railken/amethyst-ftp": "0.1.*",
-        "railken/amethyst-importer": "0.1.*"
+        "amethyst/common": "0.1.*",
+        "amethyst/file-generator": "0.1.*",
+        "amethyst/email-sender": "0.1.*",
+        "amethyst/data-builder": "0.1.*",
+        "amethyst/notification-sender": "0.1.*",
+        "amethyst/http-requester": "0.1.*",
+        "amethyst/ftp": "0.1.*",
+        "amethyst/importer": "0.1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.1",
         "orchestra/testbench": "3.*",
-        "railken/amethyst-user": "0.1.*"
+        "amethyst/user": "0.1.*"
     },
     "autoload": {
         "psr-4" : {
-            "Railken\\Amethyst\\" : "src/"
+            "Amethyst\\" : "src/"
         }
     },
     "autoload-dev": {
         "psr-4": { 
-            "Railken\\Amethyst\\Tests\\": "tests/" 
+            "Amethyst\\Tests\\": "tests/" 
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Railken\\Amethyst\\Providers\\WorkServiceProvider"
+                "Amethyst\\Providers\\WorkServiceProvider"
             ]
         }
     }

@@ -1,15 +1,15 @@
 <?php
 
-namespace Railken\Amethyst\Workers;
+namespace Amethyst\Workers;
 
-use Railken\Amethyst\Managers\ImporterManager;
-use Railken\Amethyst\Models\Work;
+use Amethyst\Managers\ImporterManager;
+use Amethyst\Models\Work;
 use stdClass;
 
 class ImporterWorker extends BaseWorker
 {
     /**
-     * @var \Railken\Amethyst\Managers\ImporterManager
+     * @var \Amethyst\Managers\ImporterManager
      */
     protected $manager;
 

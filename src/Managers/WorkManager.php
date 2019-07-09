@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\Amethyst\Managers;
+namespace Amethyst\Managers;
 
-use Railken\Amethyst\Common\ConfigurableManager;
-use Railken\Amethyst\Jobs\ProcessWork;
-use Railken\Amethyst\Models\Work;
+use Amethyst\Common\ConfigurableManager;
+use Amethyst\Jobs\ProcessWork;
+use Amethyst\Models\Work;
 use Railken\Lem\Manager;
 use Railken\Lem\Result;
 

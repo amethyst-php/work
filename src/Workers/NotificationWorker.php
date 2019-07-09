@@ -1,15 +1,15 @@
 <?php
 
-namespace Railken\Amethyst\Workers;
+namespace Amethyst\Workers;
 
-use Railken\Amethyst\Managers\NotificationSenderManager;
-use Railken\Amethyst\Models\Work;
+use Amethyst\Managers\NotificationSenderManager;
+use Amethyst\Models\Work;
 use stdClass;
 
 class NotificationWorker extends BaseWorker
 {
     /**
-     * @var \Railken\Amethyst\Managers\NotificationSenderManager
+     * @var \Amethyst\Managers\NotificationSenderManager
      */
     protected $manager;
 

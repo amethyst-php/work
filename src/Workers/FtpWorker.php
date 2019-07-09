@@ -1,15 +1,15 @@
 <?php
 
-namespace Railken\Amethyst\Workers;
+namespace Amethyst\Workers;
 
-use Railken\Amethyst\Managers\FtpActionManager;
-use Railken\Amethyst\Models\Work;
+use Amethyst\Managers\FtpActionManager;
+use Amethyst\Models\Work;
 use stdClass;
 
 class FtpWorker extends BaseWorker
 {
     /**
-     * @var \Railken\Amethyst\Managers\FtpActionManager
+     * @var \Amethyst\Managers\FtpActionManager
      */
     protected $manager;
 

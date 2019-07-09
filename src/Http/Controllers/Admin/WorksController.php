@@ -1,11 +1,11 @@
 <?php
 
-namespace Railken\Amethyst\Http\Controllers\Admin;
+namespace Amethyst\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Railken\Amethyst\Api\Http\Controllers\RestManagerController;
-use Railken\Amethyst\Api\Http\Controllers\Traits as RestTraits;
-use Railken\Amethyst\Managers\WorkManager;
+use Amethyst\Api\Http\Controllers\RestManagerController;
+use Amethyst\Api\Http\Controllers\Traits as RestTraits;
+use Amethyst\Managers\WorkManager;
 use Symfony\Component\HttpFoundation\Response;
 
 class WorksController extends RestManagerController
@@ -31,10 +31,10 @@ class WorksController extends RestManagerController
      */
     public function execute(int $id, Request $request)
     {
-        /** @var \Railken\Amethyst\Managers\WorkManager */
+        /** @var \Amethyst\Managers\WorkManager */
         $manager = $this->manager;
 
-        /** @var \Railken\Amethyst\Models\Work */
+        /** @var \Amethyst\Models\Work */
         $work = $manager->getRepository()->findOneById($id);
 
         if ($work == null) {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Railken\Amethyst\Workers;
+namespace Amethyst\Workers;
 
-use Railken\Amethyst\Managers\FileGeneratorManager;
-use Railken\Amethyst\Models\Work;
+use Amethyst\Managers\FileGeneratorManager;
+use Amethyst\Models\Work;
 use stdClass;
 
 class FileWorker extends BaseWorker
 {
     /**
-     * @var \Railken\Amethyst\Managers\FileGeneratorManager
+     * @var \Amethyst\Managers\FileGeneratorManager
      */
     protected $manager;
 

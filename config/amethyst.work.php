@@ -13,14 +13,14 @@ return [
         'work' => [
             'table'      => 'amethyst_works',
             'comment'    => 'Work',
-            'model'      => Railken\Amethyst\Models\Work::class,
-            'schema'     => Railken\Amethyst\Schemas\WorkSchema::class,
-            'repository' => Railken\Amethyst\Repositories\WorkRepository::class,
-            'serializer' => Railken\Amethyst\Serializers\WorkSerializer::class,
-            'validator'  => Railken\Amethyst\Validators\WorkValidator::class,
-            'authorizer' => Railken\Amethyst\Authorizers\WorkAuthorizer::class,
-            'faker'      => Railken\Amethyst\Fakers\WorkFaker::class,
-            'manager'    => Railken\Amethyst\Managers\WorkManager::class,
+            'model'      => Amethyst\Models\Work::class,
+            'schema'     => Amethyst\Schemas\WorkSchema::class,
+            'repository' => Amethyst\Repositories\WorkRepository::class,
+            'serializer' => Amethyst\Serializers\WorkSerializer::class,
+            'validator'  => Amethyst\Validators\WorkValidator::class,
+            'authorizer' => Amethyst\Authorizers\WorkAuthorizer::class,
+            'faker'      => Amethyst\Fakers\WorkFaker::class,
+            'manager'    => Amethyst\Managers\WorkManager::class,
         ],
     ],
 
@@ -36,7 +36,7 @@ return [
         'admin' => [
             'work' => [
                 'enabled'    => true,
-                'controller' => Railken\Amethyst\Http\Controllers\Admin\WorksController::class,
+                'controller' => Amethyst\Http\Controllers\Admin\WorksController::class,
                 'router'     => [
                     'as'     => 'work.',
                     'prefix' => '/works',

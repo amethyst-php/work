@@ -1,12 +1,12 @@
 <?php
 
-namespace Railken\Amethyst\Tests\Workers;
+namespace Amethyst\Tests\Workers;
 
-use Railken\Amethyst\Fakers\FileGeneratorFaker;
-use Railken\Amethyst\Fakers\WorkFaker;
-use Railken\Amethyst\Managers\FileGeneratorManager;
-use Railken\Amethyst\Managers\WorkManager;
-use Railken\Amethyst\Tests\BaseTest;
+use Amethyst\Fakers\FileGeneratorFaker;
+use Amethyst\Fakers\WorkFaker;
+use Amethyst\Managers\FileGeneratorManager;
+use Amethyst\Managers\WorkManager;
+use Amethyst\Tests\BaseTest;
 use Symfony\Component\Yaml\Yaml;
 
 class WorkerFileTest extends BaseTest
@@ -31,7 +31,7 @@ class WorkerFileTest extends BaseTest
         )->getResource();
 
         $result = $this->getManager()->create(WorkFaker::make()->parameters()->set('payload', Yaml::dump([
-            'class' => 'Railken\Amethyst\Workers\FileWorker',
+            'class' => 'Amethyst\Workers\FileWorker',
             'data'  => [
                 'id' => $fg->id,
             ],

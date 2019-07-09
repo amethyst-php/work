@@ -1,8 +1,8 @@
 <?php
 
-namespace Railken\Amethyst\Workers;
+namespace Amethyst\Workers;
 
-use Railken\Amethyst\Models\Work;
+use Amethyst\Models\Work;
 
 class BaseWorker implements WorkerContract
 {

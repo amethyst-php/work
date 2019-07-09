@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\Amethyst\Workers;
+namespace Amethyst\Workers;
 
 interface WorkerContract
 {

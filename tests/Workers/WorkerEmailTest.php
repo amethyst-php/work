@@ -1,13 +1,13 @@
 <?php
 
-namespace Railken\Amethyst\Tests\Workers;
+namespace Amethyst\Tests\Workers;
 
-use Railken\Amethyst\Fakers\EmailSenderFaker;
-use Railken\Amethyst\Fakers\WorkFaker;
-use Railken\Amethyst\Managers\EmailSenderManager;
-use Railken\Amethyst\Managers\FileManager;
-use Railken\Amethyst\Managers\WorkManager;
-use Railken\Amethyst\Tests\BaseTest;
+use Amethyst\Fakers\EmailSenderFaker;
+use Amethyst\Fakers\WorkFaker;
+use Amethyst\Managers\EmailSenderManager;
+use Amethyst\Managers\FileManager;
+use Amethyst\Managers\WorkManager;
+use Amethyst\Tests\BaseTest;
 use Symfony\Component\Yaml\Yaml;
 
 class WorkerEmailTest extends BaseTest
@@ -28,7 +28,7 @@ class WorkerEmailTest extends BaseTest
         $es = $esm->create(EmailSenderFaker::make()->parameters()->set('body', '{{ user.name }}'))->getResource();
 
         $work = $this->getManager()->create(WorkFaker::make()->parameters()->set('payload', Yaml::dump([
-            'class' => 'Railken\Amethyst\Workers\EmailWorker',
+            'class' => 'Amethyst\Workers\EmailWorker',
             'data'  => [
                 'id' => $es->id,
             ],

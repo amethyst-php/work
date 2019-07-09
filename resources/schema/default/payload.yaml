@@ -4,24 +4,24 @@
 #
 # Example 1. Generate a File using the FileGenerator with id 1
 #
-# class: Railken\Amethyst\Workers\FileWorker
+# class: Amethyst\Workers\FileWorker
 # data:
 #   id: 1
 #
 # Example 2. Send an email using EmailSender with id 1
 #
-# class: Railken\Amethyst\Workers\EmailWorker
+# class: Amethyst\Workers\EmailWorker
 # data:
 #   id: 1
 #
 # Example 3. Perform a task with FtpActions with id 1
 #
-# class: Railken\Amethyst\Workers\FtpWorker
+# class: Amethyst\Workers\FtpWorker
 # data:
 #   id: 1
 #
 # Example 4. Perform a task with HttpRequester with id 1
 #
-# class: Railken\Amethyst\Workers\HttpWorker
+# class: Amethyst\Workers\HttpWorker
 # data:
 #   id: 1

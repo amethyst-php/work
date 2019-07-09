@@ -1,15 +1,15 @@
 <?php
 
-namespace Railken\Amethyst\Workers;
+namespace Amethyst\Workers;
 
-use Railken\Amethyst\Managers\EmailSenderManager;
-use Railken\Amethyst\Models\Work;
+use Amethyst\Managers\EmailSenderManager;
+use Amethyst\Models\Work;
 use stdClass;
 
 class EmailWorker extends BaseWorker
 {
     /**
-     * @var \Railken\Amethyst\Managers\EmailSenderManager
+     * @var \Amethyst\Managers\EmailSenderManager
      */
     protected $manager;
 

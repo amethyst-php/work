@@ -1,13 +1,13 @@
 <?php
 
-namespace Railken\Amethyst\Jobs;
+namespace Amethyst\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Railken\Amethyst\Models\Work;
+use Amethyst\Models\Work;
 use Railken\Template\Generators;
 use Symfony\Component\Yaml\Yaml;
 

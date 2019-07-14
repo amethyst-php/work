@@ -2,7 +2,7 @@
 
 namespace Amethyst\Fakers;
 
-use Amethyst\DataBuilders\DummyDataBuilder;
+use Amethyst\DataBuilders\CommonDataBuilder;
 use Faker\Factory;
 use Railken\Bag;
 use Railken\Lem\Faker;
@@ -21,7 +21,7 @@ class WorkFaker extends Faker
         $bag->set('name', $faker->name);
         $bag->set('payload', Yaml::dump(['dummy' => 'dummy']));
         $bag->set('description', $faker->text);
-        $bag->set('data_builder', DataBuilderFaker::make()->parameters()->set('data_builder.class_name', DummyDataBuilder::class)->toArray());
+        $bag->set('data_builder', DataBuilderFaker::make()->parameters()->set('data_builder.class_name', CommonDataBuilder::class)->toArray());
         $bag->set('data', Yaml::dump([
             'id' => '{{ record.id }}',
         ]));

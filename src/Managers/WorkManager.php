@@ -8,6 +8,14 @@ use Amethyst\Models\Work;
 use Railken\Lem\Manager;
 use Railken\Lem\Result;
 
+/**
+ * @method \Amethyst\Models\Work newEntity()
+ * @method \Amethyst\Schemas\WorkSchema getSchema()
+ * @method \Amethyst\Repositories\WorkRepository getRepository()
+ * @method \Amethyst\Serializers\WorkSerializer getSerializer()
+ * @method \Amethyst\Validators\WorkValidator getValidator()
+ * @method \Amethyst\Authorizers\WorkAuthorizer getAuthorizer()
+ */
 class WorkManager extends Manager
 {
     use ConfigurableManager;

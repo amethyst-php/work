@@ -16,11 +16,8 @@ class WorkServiceProvider extends CommonServiceProvider
     {
         parent::register();
         $this->loadExtraRoutes();
-
-        $this->app->register(\Amethyst\Providers\EmailSenderServiceProvider::class);
-        $this->app->register(\Amethyst\Providers\FileGeneratorServiceProvider::class);
+        
         $this->app->register(\Amethyst\Providers\DataBuilderServiceProvider::class);
-        $this->app->register(\Amethyst\Providers\NotificationSenderServiceProvider::class);
     }
 
     /**

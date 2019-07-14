@@ -16,7 +16,7 @@ class WorkServiceProvider extends CommonServiceProvider
     {
         parent::register();
         $this->loadExtraRoutes();
-        
+
         $this->app->register(\Amethyst\Providers\DataBuilderServiceProvider::class);
     }
 

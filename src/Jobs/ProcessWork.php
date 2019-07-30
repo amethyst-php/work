@@ -52,7 +52,7 @@ class ProcessWork implements ShouldQueue
             $worker = new $payload->class();
             $method = $payload->method;
 
-            $worker->$method(...array_merge($payload->arguments, [$data]));
+            $worker->$method(...$payload->arguments);
         };
 
         if ($work->data_builder) {
